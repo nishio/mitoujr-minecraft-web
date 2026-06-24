@@ -17,8 +17,11 @@ tech.html             技術記事 一覧
   tech/iac.html              世界を“せっけい図”で持つ
   tech/history.html          一度、死にかけた世界の話
 diary.html            Robo日記 一覧
-  diary/day1.html            Day1: 朽ちかけた世界で、目をさます
-  diary/day2.html            Day2: 暗がりに、明かりをともす
+  diary/day1.html            Day1: 引っ越しの最初の日
+  diary/day2.html            Day2: 動かない理由を切り分ける
+  ...
+  diary/day16.html           Day16: Roboの家
+assets/diary/         Robo日記用の実スクショ
 css/style.css         共通スタイル
 ```
 
@@ -26,8 +29,8 @@ css/style.css         共通スタイル
 
 ```sh
 cd mitoujr-minecraft-web
-python3 -m http.server 8000
-# → http://localhost:8000/ を開く
+python3 -m http.server 8123 --bind 127.0.0.1
+# → http://127.0.0.1:8123/ を開く
 ```
 
 ## 公開してよい範囲（重要）
@@ -38,6 +41,7 @@ python3 -m http.server 8000
 - インフラの具体的な構成（クラウドの各種ID・バケット名・設定の中身など）
 - サーバの運用手順・状態
 - プレイヤーや関係者の実名など、個人を特定できる情報
+- 荒らしの手助けになる重要建築のピンポイント座標
 
 技術記事は「しくみの考え方」だけを、やさしく紹介しています。
-日記は、公開用に書き直した読み物です（日々のこまかい作業記録は別管理）。
+日記は、Cosenseの日々の記録を読んだうえで、公開用に書き直した読み物です。
