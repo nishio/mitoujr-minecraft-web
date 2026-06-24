@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>こわされても、もとにもどせる — 技術記事</title>
+<meta name="description" content="建物がこわされたとき（あらし）にそなえた3つのしくみ。記録する・バックアップする・そもそも守る。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ まもる</p>
+    <h1>こわされても、もとにもどせる</h1>
+
+    <p>Minecraft では、だれかがまちがって——ときどき、わざと——建物をこわしてしまうことがあります。これを「グリーフィング（あらし）」と言います。</p>
+    <p>この世界では、そんなときのために <strong>3つのそなえ</strong> をしています。</p>
+
+    <h2>1. だれが何をしたか、記録しておく</h2>
+    <p>ブロックが置かれたり、こわされたりするたびに、その記録をのこしています。だから「いつ・どこが・どう変わったか」をあとから調べられます。あらしが起きても、こわされた部分<strong>だけ</strong>を選んで元にもどせます。みんなが正しく作ったものは、そのまま残せるのです。</p>
+
+    <h2>2. 世界まるごとのバックアップ</h2>
+    <p>サーバがねむる前に、世界全体のコピー（バックアップ）をとっています。もし大きな事故があっても、少し前の世界にまるごと戻せます。「写真をとっておく」のに近いイメージです。前のとちがうところだけを足して保存するので、ばしょも時間もむだにしません。</p>
+
+    <h2>3. 大事な場所は、そもそもこわせないように</h2>
+    <p>スポーン（最初に降りてくる場所）など、みんなが使う大事な場所は、ふつうの人ではこわせないように保護してあります。こわされてから直すのではなく、<strong>こわされる前に防ぐ</strong>。これがいちばん安全です。</p>
+
+    <p>1と2が「こわされても戻せる」しくみ、3が「そもそも守る」しくみです。この3つがそろっているから、Robo は安心して世界を見回っていられます。</p>
+
+    <div class="callout">
+      <strong>むずかしい言葉メモ：「ロールバック」</strong><br>
+      時間をまきもどすように、あった変更を「なかったこと」にすること。Robo はこの力を使って、こわされた場所をピンポイントで元どおりに直します。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバの中身・個人の名前などは、このサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

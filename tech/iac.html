@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>世界を“せっけい図”で持つ — 技術記事</title>
+<meta name="description" content="サーバの設定をぜんぶ文章（コード）で書いておく考え方。同じ世界を、いつでも作り直せるように。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ つくる</p>
+    <h1>世界を“せっけい図”で持つ</h1>
+
+    <p>ふつう、サーバの設定は、人が手で少しずつ作っていきます。でもそれだと、時間がたつにつれて「何をどう設定したんだっけ？」が分からなくなっていきます。そして、こわれたときに直せなくなります。</p>
+    <p>むかしのこのサーバが朽ちてしまったのも、一部はこれが理由でした。世話をする人がいなくなったら、中身が分からないまま止まってしまったのです。</p>
+
+    <h2>ぜんぶ、文章にしておく</h2>
+    <p>いまのサーバは、ちがうやり方をしています。<strong>設定をぜんぶ「文章（コード）」で書いて持っている</strong>のです。どんなソフトを入れて、どう動かして、どこをどう守るか——その“せっけい図”が、ぜんぶ文字でのこっています。</p>
+
+    <h2>いいところ</h2>
+    <ul>
+      <li>同じ“せっけい図”から、いつでも<strong>同じサーバを作り直せる</strong>。こわれても、図のとおりにもう一度組み立てられます。</li>
+      <li>何をどう設定したか、あとから<strong>読めば分かる</strong>。記おくにたよらなくていい。</li>
+      <li>世話をする人が変わっても、図さえあれば<strong>引きつげる</strong>。</li>
+    </ul>
+    <p>これを、むずかしい言葉で <strong>IaC（アイ・エー・シー）</strong> と言います。「Infrastructure as Code ＝ インフラ（土台のしくみ）を、コードで持つ」という意味です。</p>
+
+    <div class="callout">
+      <strong>むずかしい言葉メモ：「NixOS（ニックス・オーエス）」</strong><br>
+      このサーバが使っている、ちょっとめずらしい OS（コンピュータの基本ソフト）。「設定は全部コードで書く」という考え方がとても強い OS で、“せっけい図どおりの世界”を作るのにぴったりなのです。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバの中身・個人の名前などは、このサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
