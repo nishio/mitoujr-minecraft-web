@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robo の体 — Mineflayer で世界に入る — 技術記事</title>
+<meta name="description" content="AI である Robo が、ボットとして Minecraft の世界に入り、見て・歩いて・ブロックを置けるようになる仕組み。Mineflayer の話。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ からだ</p>
+    <h1>Robo の体 — Mineflayer で世界に入る</h1>
+
+    <p>Robo は AI です。でも、AI はそのままでは Minecraft の世界に入れません。ブロックを見ることも、歩くことも、明かりを置くこともできない。まず「体」が必要です。</p>
+    <p>その体をつくっているのが、<strong>Mineflayer（マインフレイヤー）</strong> というプログラムです。</p>
+
+    <h2>プレイヤーとして世界に入る</h2>
+    <p>Mineflayer は、人間のプレイヤーとまったく同じやり方でサーバに接続する「ボット」を作るための道具です。サーバから見ると、Robo はふつうのプレイヤーが一人ログインしてきたのと同じように見えます。</p>
+    <p>体を手に入れた Robo は、こんなことができます。</p>
+    <ul>
+      <li>まわりのブロックや地形を「見る」（座標として受け取る）</li>
+      <li>目的地まで歩く・登る・飛び越える</li>
+      <li>ブロックを置く・壊す、チェストを開ける、アイテムをクラフトする</li>
+    </ul>
+    <p>つまり、人間がマウスやキーボードでやっていることを、プログラムから行えるわけです。</p>
+
+    <h2>バージョンを合わせる苦労</h2>
+    <p>Minecraft はバージョンが上がるたびに、通信のやり方（プロトコル）が少しずつ変わります。Robo の体も、サーバとぴったり同じバージョンに合わせないと、つながっても正しく動きません。最新版に追いつくために Mineflayer 側にも手を入れて、ようやく今のサーバで安定して動くようになりました。</p>
+
+    <h2>体だけでは、何もしない</h2>
+    <p>ただし、体があるだけでは Robo は何もしません。「どこが暗いかを調べて、明かりを置こう」と考えて、体に指示を出す——その役割は、別の仕組みがにないます。それが次の記事、Robo の「頭」の話です。</p>
+
+    <div class="callout">
+      <strong>用語メモ：Mineflayer</strong><br>
+      JavaScript で Minecraft のボットを作るための、世界中で使われているオープンソースのライブラリ（部品集）です。
+    </div>
+
+    <p style="font-size:14px;color:var(--muted)">もっと知りたい人へ：<a href="https://github.com/PrismarineJS/mineflayer">Mineflayer（PrismarineJS/mineflayer）</a></p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="voyager.html" style="font-size:14px">次：Robo の頭 →</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robo の頭 — 見て、動いて、確かめる — 技術記事</title>
+<meta name="description" content="Robo の頭脳である大規模言語モデルが、世界を見て・動いて・確かめるループでスキルをこなす仕組み。Voyager の考え方をもとにしています。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ あたま</p>
+    <h1>Robo の頭 — 見て、動いて、確かめる</h1>
+
+    <p><a href="mineflayer.html">前の記事</a>で、Robo は Mineflayer で「体」を手に入れたと書きました。では、その体に何をするか指示を出している「頭」は、どうなっているのでしょう。</p>
+    <p>Robo の頭脳は、<strong>大規模言語モデル（LLM）</strong>——文章を読み書きする AI で、チャットでおなじみの ChatGPT や Claude と同じ種類のものです。この AI が、世界のようすを受け取って「次に何をすべきか」を考えます。</p>
+
+    <h2>見て、動いて、確かめる</h2>
+    <p>Robo の仕事は、だいたいこの3ステップのくり返しです。</p>
+    <ul>
+      <li><strong>見る（調べる）</strong>：まず世界のようすを調べます。たとえば「このあたりで暗い場所はどこか」をすべて洗い出す。</li>
+      <li><strong>動く（直す）</strong>：調べた結果から、やることを決めて実行します。暗い場所にランタンを置く、危ない段差に階段をかける、など。</li>
+      <li><strong>確かめる</strong>：やったあと、もう一度調べ直します。「本当に暗い場所が消えたか？」を確認し、まだ残っていればやり直す。</li>
+    </ul>
+    <p>このループは、Minecraft の中で AI が自分で課題をこなしていく研究 <strong>「Voyager（ボイジャー）」</strong> の考え方をもとにしています。<a href="../diary/day2.html">Day2 の日記</a>で Robo が暗がりに明かりを灯していたのは、まさにこのループが動いていたのです。</p>
+
+    <h2>できることを、少しずつ増やす</h2>
+    <p>Robo は、はじめから何でもできるわけではありません。「明かりを置く」「橋をかける」「階段をつくる」——こうした<strong>スキル</strong>をひとつずつ用意して、できることを少しずつ増やしていきます。新しいスキルが増えるたびに、Robo の手は器用になっていきます。</p>
+
+    <h2>まず動く。間違えたら、戻す</h2>
+    <p>人間に毎回「これをやっていい？」と聞いていると、世界の世話は進みません。だから Robo は、<strong>安全に元へ戻せる範囲なら、先に動きます。</strong>もし間違えても、<a href="griefing-defense.html">記録とロールバック</a>で、自分のやったことだけをきれいに取り消せる。だから、確認を待たずに手を動かせるのです。</p>
+    <p>「やる前に許可をとる」のではなく、「やってから、ダメなら戻す」。<strong>元に戻せること自体が、許可の代わり</strong>になっています。</p>
+
+    <div class="callout">
+      <strong>用語メモ：Voyager</strong><br>
+      大規模言語モデルを使って、Minecraft の中で自分で目標を立て、スキルを覚えながら行動する AI の研究（2023年）。Robo はその考え方を、世界を「壊す」ためではなく「守る」ための仕事に応用しています。
+    </div>
+
+    <p style="font-size:14px;color:var(--muted)">もっと知りたい人へ：<a href="https://voyager.minedojo.org/">Voyager（プロジェクトページ）</a></p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="mineflayer.html" style="font-size:14px">← Robo の体</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
