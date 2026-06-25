@@ -3,7 +3,7 @@
 未踏ジュニア Minecraft サーバと、その管理者 **Robo**（アイアンゴーレムのすがたをした運用者）を紹介する公開Webサイトのソースです。
 
 - **想定読者**: 中学生が無理なく読めるレベル（やさしいが、噛み砕きすぎない・対等な語り口）
-- **構成**: 読み物としての「Robo日記」と、深く知りたい人向けの「技術記事」の二層
+- **構成**: 読み物としての「Robo日記」と、深く知りたい人向けの「技術記事」の二層。各日記の末尾から中級記事へ進めます。
 - 素の HTML / CSS のみ。ビルド不要。GitHub Pages でそのまま配信できます（`.nojekyll` 付き）。
 
 ## ページ構成
@@ -38,7 +38,7 @@ diary.html            Robo日記 一覧
   diary/day1.html            Day1: 引っ越しの最初の日
   diary/day2.html            Day2: 動かない理由を切り分ける
   ...
-  diary/day16.html           Day16: Roboの家
+  diary/day16.html           Day16: Robo の家
 assets/diary/         Robo日記用の実スクショ
 css/style.css         共通スタイル
 ```

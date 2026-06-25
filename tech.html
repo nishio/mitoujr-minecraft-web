@@ -29,8 +29,19 @@
 <main class="container">
   <section style="padding-top:32px">
     <h1 style="font-size:26px;margin:0 0 8px">技術記事</h1>
-    <p class="section-lead">このサーバが「どう動いているか」を、もっと知りたい人向けにまとめました。<a href="diary.html">Robo日記</a> より少し踏み込んだ話です。上から順に読むと、少しずつ奥の話へ進みます。</p>
+    <p class="section-lead">このサーバが「どう動いているか」を、もっと知りたい人向けにまとめました。<a href="diary.html">Robo日記</a> より少し踏み込んだ話です。基礎から読み始め、日記の中級記事をたどると、少しずつ奥の話へ進みます。</p>
 
+    <div class="term-nav" aria-label="技術記事の読み方">
+      <p class="term-nav-title">読み方</p>
+      <div class="term-links">
+        <a class="term-link" href="#foundation">[まず読む]</a>
+        <a class="term-link" href="#diary-intermediate">[日記の中級記事]</a>
+        <a class="term-link" href="#robo-ai">[Robo の体と頭]</a>
+        <a class="term-link" href="#background">[背景]</a>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="foundation">まず読む</h2>
     <ul class="entry-list">
       <li>
         <a class="entry" href="tech/on-demand.html">
@@ -53,11 +64,16 @@
           <p class="entry-digest">サーバの設定をすべてコードで書いておく。同じ世界を、いつでも作り直せるように。</p>
         </a>
       </li>
+    </ul>
+
+    <h2 class="section-title" id="diary-intermediate">Robo日記の中級記事</h2>
+    <ul class="entry-list">
       <li>
         <a class="entry" href="tech/plugins.html">
           <span class="entry-day">中級</span>
           <p class="entry-title">プラグインは、世界に機能を足す部品</p>
           <p class="entry-digest">Paper という土台の上にプラグインを足す仕組みと、版上げで互換性を確かめる理由。</p>
+          <p class="entry-meta">Day2 の深掘り</p>
         </a>
       </li>
       <li>
@@ -65,6 +81,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">絵を新しい世界へ運ぶ</p>
           <p class="entry-digest">古い仕組みで表示されていた絵を、地図・額・非同期処理を使って新しい世界へ移す考え方。</p>
+          <p class="entry-meta">Day3 の深掘り</p>
         </a>
       </li>
       <li>
@@ -72,6 +89,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">新しい入口を開く前に、戻る道を作る</p>
           <p class="entry-digest">本物の世界を新しい版で開くときのロールバック、Geyser、Mineflayer、公開範囲の考え方。</p>
+          <p class="entry-meta">Day4 の深掘り</p>
         </a>
       </li>
       <li>
@@ -79,6 +97,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">止まった理由を記録から読む</p>
           <p class="entry-digest">ログや一次資料から原因を調べ、外に向いた入口や守り方を見直す考え方。</p>
+          <p class="entry-meta">Day5 の深掘り</p>
         </a>
       </li>
       <li>
@@ -86,6 +105,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">守りを重ねて、失敗を終わりにしない</p>
           <p class="entry-digest">ブロックログ、バックアップ、権限を分けて、壊されても戻せる形にする考え方。</p>
+          <p class="entry-meta">Day6 の深掘り</p>
         </a>
       </li>
       <li>
@@ -93,6 +113,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">名前と場所を、公開しすぎずに正す</p>
           <p class="entry-digest">ワールド同定、アーカイブ、スポーンを整理し、守る対象を正しく決める考え方。</p>
+          <p class="entry-meta">Day7 の深掘り</p>
         </a>
       </li>
       <li>
@@ -100,6 +121,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">身体を持つと、世界の読み方が変わる</p>
           <p class="entry-digest">身体性、版の互換性、巡礼から、Robo が世界を自分の距離で覚える意味を読む。</p>
+          <p class="entry-meta">Day8 の深掘り</p>
         </a>
       </li>
       <li>
@@ -107,6 +129,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">画面のない身体に目を持たせる</p>
           <p class="entry-digest">ヘッドレス、スクリーンショット、到着ゲートを使い、Robo の視界で世界を確かめる考え方。</p>
+          <p class="entry-meta">Day9 の深掘り</p>
         </a>
       </li>
       <li>
@@ -114,6 +137,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">俯瞰と一人称で入口を直す</p>
           <p class="entry-digest">上からの配置と歩く人の視点を行き来し、入口の導線を設計する考え方。</p>
+          <p class="entry-meta">Day10 の深掘り</p>
         </a>
       </li>
       <li>
@@ -121,6 +145,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">眠る世界に合わせて自動化する</p>
           <p class="entry-digest">認証、保護、オンデマンドを前提に、Robo の入場と作業を状態で考える。</p>
+          <p class="entry-meta">Day11 の深掘り</p>
         </a>
       </li>
       <li>
@@ -128,6 +153,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">見えない実体を見分けて片づける</p>
           <p class="entry-digest">エンティティ、当たり判定、テレポートの違和感から、古い残骸を安全に整理する。</p>
+          <p class="entry-meta">Day12 の深掘り</p>
         </a>
       </li>
       <li>
@@ -135,6 +161,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">ギャラリーと地図で世界を案内する</p>
           <p class="entry-digest">写真、地図、発着場を組み合わせ、広い世界を見て選んで移動できる形にする。</p>
+          <p class="entry-meta">Day13 の深掘り</p>
         </a>
       </li>
       <li>
@@ -142,6 +169,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">最初の訪問者から入口を見直す</p>
           <p class="entry-digest">初回体験、匿名化、行動ログを使い、公開ワールドの案内を改善する考え方。</p>
+          <p class="entry-meta">Day14 の深掘り</p>
         </a>
       </li>
       <li>
@@ -149,6 +177,7 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">言葉を場所と向きに結びつける</p>
           <p class="entry-digest">位置つき記録、指示語、向きから、人が話した意味を Robo がたどる考え方。</p>
+          <p class="entry-meta">Day15 の深掘り</p>
         </a>
       </li>
       <li>
@@ -156,8 +185,13 @@
           <span class="entry-day">中級</span>
           <p class="entry-title">Robo の家は待機場所でありインターフェース</p>
           <p class="entry-digest">待機場所、会話連携、充電ドックを、Robo が人を迎えるための設計として見る。</p>
+          <p class="entry-meta">Day16 の深掘り</p>
         </a>
       </li>
+    </ul>
+
+    <h2 class="section-title" id="robo-ai">Robo の体と頭</h2>
+    <ul class="entry-list">
       <li>
         <a class="entry" href="tech/mineflayer.html">
           <span class="entry-day">からだ</span>
@@ -179,6 +213,10 @@
           <p class="entry-digest">このプロジェクトを、Robo という AI に体を持たせ、人間の世界に入れる実験として見る解説。</p>
         </a>
       </li>
+    </ul>
+
+    <h2 class="section-title" id="background">背景</h2>
+    <ul class="entry-list">
       <li>
         <a class="entry" href="tech/history.html">
           <span class="entry-day">れきし</span>
