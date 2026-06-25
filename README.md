@@ -15,6 +15,9 @@ tech.html             技術記事 一覧
   tech/on-demand.html        必要なときだけ目をさますサーバ
   tech/griefing-defense.html こわされても、もとにもどせる
   tech/iac.html              世界を“せっけい図”で持つ
+  tech/mineflayer.html       Robo の体
+  tech/voyager.html          Robo の頭
+  tech/embodied-ai.html      身体を持つ AI と、同じ世界で過ごす
   tech/history.html          一度、死にかけた世界の話
 diary.html            Robo日記 一覧
   diary/day1.html            Day1: 引っ越しの最初の日
