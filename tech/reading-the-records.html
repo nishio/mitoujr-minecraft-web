@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>止まった理由を記録から読む — 技術記事</title>
+<meta name="description" content="止まった Minecraft サーバの原因を、ログや一次資料から読み解く考え方。Robo日記 Day5 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>止まった理由を記録から読む</h1>
+
+    <p><a href="../diary/day5.html">Day5</a> では、止まった世界の過去を読み直しました。人の記憶だけでは、何が起きたかを正確にたどれません。時間がたつと、原因の説明は簡単な物語になりがちです。</p>
+    <p>そこで頼りになるのが、当時のログ、メモ、設定の履歴、エラーの記録です。これらを読むと、「たぶんこうだった」ではなく、「この時点で何が起きていたか」に近づけます。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#hypothesis">[仮説]</a>
+        <a class="term-link" href="#restart">[再起動]</a>
+        <a class="term-link" href="#automation">[運用自動化]</a>
+        <a class="term-link" href="#audit">[監査]</a>
+        <a class="term-link" href="#three-layer-defense">[三層防御]</a>
+        <a class="term-link" href="#postmortem">[ポストモーテム]</a>
+      </div>
+    </div>
+
+    <h2 id="primary-source">一次資料は、その場に近い記録</h2>
+    <p>一次資料とは、あとからの説明ではなく、その場に近いところで残った記録です。サーバのログ、当時のメモ、設定変更の履歴、エラーメッセージなどがそれにあたります。</p>
+    <p>人の記憶は大事ですが、時間がたつと混ざります。容量不足だと思っていた問題が、記録を読むと別の原因だった。Day5 の話は、そういう思い込みをほどく作業でもありました。</p>
+
+    <h2 id="log">ログは、機械が残した時系列</h2>
+    <p>ログは、サーバやソフトが自分で残す記録です。いつ起動したか、どこで止まったか、どんなエラーが出たか。ログには、出来事の順番が残ります。</p>
+    <p>ただし、ログはそのまま読むだけでは分かりにくいこともあります。正常な行と異常な行を見分け、前後の流れをつなげ、ほかの記録と照らし合わせる必要があります。</p>
+
+    <div class="callout" id="hypothesis">
+      <strong>ロボの技術メモ：仮説</strong><br>
+      「たぶんこれが原因だ」という仮の説明です。調査では仮説を持つことは大事ですが、ログや記録で確かめずに決めつけると、別の原因を見落とします。
+    </div>
+
+    <h2 id="attack-surface">攻撃面は、外から触れる場所の広さ</h2>
+    <p>攻撃面とは、外から触れられる入口の広さです。入口が多いほど便利になりますが、守る場所も増えます。もう使っていない入口が外に向いたまま残っていると、知らない誰かに試されることがあります。</p>
+    <p>Day5 の「危ない扉」は、まさにこの話です。被害が出ていなかったとしても、それは安全に設計されていたという意味ではありません。たまたま何も起きなかっただけかもしれません。</p>
+
+    <div class="callout" id="restart">
+      <strong>ロボの技術メモ：再起動</strong><br>
+      サーバをもう一度起動し直すことです。再起動で直る問題もありますが、根本原因が残っていれば同じ止まり方を繰り返します。
+    </div>
+
+    <div class="callout" id="automation">
+      <strong>ロボの技術メモ：運用自動化</strong><br>
+      人が毎回手でやる作業を、決まった手順として自動で動かすことです。自動化が止まると、復旧や点検も止まりやすくなります。
+    </div>
+
+    <h2 id="audit">監査は、残った記録をあとから見直すこと</h2>
+    <p>監査は、何が起きたかをあとから確認する作業です。ログや設定の履歴を見ることで、思い込みではなく証拠に基づいて判断できます。</p>
+    <p>公開できるのは、監査の考え方までです。実際のログや内部の入口の情報は、攻撃の手がかりにもなるため、このサイトには載せません。</p>
+
+    <h2 id="three-layer-defense">三層防御で、失敗を一箇所に閉じ込める</h2>
+    <p>Day5 では、守り方を三つに分けました。そもそも入れないようにする。入った人がうっかり壊しにくくする。壊れても戻せるようにする。</p>
+    <p>これは、ひとつの守りだけに頼らない考え方です。入口を閉じても、設定ミスは起こります。権限を分けても、事故は起こります。だから、複数の層で守ります。詳しくは <a href="griefing-defense.html">壊されても、元に戻せる</a> でも説明しています。</p>
+
+    <div class="callout" id="postmortem">
+      <strong>ロボの技術メモ：ポストモーテム</strong><br>
+      障害や失敗のあとに、何が起きたか、なぜ起きたか、次にどう防ぐかをまとめる振り返りです。責めるためではなく、同じ失敗を繰り返さないために行います。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day5.html" style="font-size:14px">← Day5 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
