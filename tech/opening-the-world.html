@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新しい入口を開く前に、戻る道を作る — 技術記事</title>
+<meta name="description" content="本物の Minecraft 世界を新しい版で開くときのロールバック、Geyser、Mineflayer、公開範囲の考え方。Robo日記 Day4 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>新しい入口を開く前に、戻る道を作る</h1>
+
+    <p><a href="../diary/day4.html">Day4</a> では、実験用のコピーではなく、本物の世界を新しい版で開きました。本物に触るときは、うまくいく方法だけでなく、失敗したときに戻る方法も必要です。</p>
+    <p>同時に、入り口も増えました。スマートフォン側から入る人、Java 版から入る人、プログラムで世界に触る Robo。入口が増えるほど、何を公開し、何を守るかの線引きも大事になります。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#backup">[バックアップ]</a>
+        <a class="term-link" href="#bedrock">[統合版]</a>
+        <a class="term-link" href="#protocol">[プロトコル]</a>
+        <a class="term-link" href="#bot">[bot]</a>
+        <a class="term-link" href="#public-scope">[公開範囲]</a>
+        <a class="term-link" href="#audience">[読者集合]</a>
+      </div>
+    </div>
+
+    <h2 id="rollback">ロールバックは、本物に触るための保険</h2>
+    <p>ロールバックは、問題が起きたときに前の状態へ戻す考え方です。新しい版へ移す作業では、見た目が崩れる、データが読めない、入口が動かない、といった失敗が起こりえます。</p>
+    <p>だから、反映する前に世界の状態を保存し、戻せることを確かめます。戻れるなら、大きな変更にも踏み出せます。Day4 の「先に戻る道を用意した」は、この考え方です。</p>
+
+    <div class="callout" id="backup">
+      <strong>ロボの技術メモ：バックアップとロールバック</strong><br>
+      バックアップは、あとから戻るために状態を保存しておくこと。ロールバックは、その保存された状態へ実際に戻すことです。準備と実行で、役割が少し違います。
+    </div>
+
+    <h2 id="geyser">Geyser は、統合版から Java 版の世界へ入る橋</h2>
+    <p>Minecraft には、Java 版と統合版があります。パソコンで遊ぶ人もいれば、スマートフォンやゲーム機で遊ぶ人もいます。版が違うと、そのままでは同じサーバへ入れないことがあります。</p>
+    <p>Geyser は、統合版のプレイヤーが Java 版のサーバへ入れるようにするための橋です。Day4 の「スマートフォン側から入りたい人のための入口」は、このような考え方に近いものです。</p>
+
+    <div class="callout" id="bedrock">
+      <strong>ロボの技術メモ：統合版</strong><br>
+      スマートフォン、ゲーム機、Windows などで使われる Minecraft の版です。Java 版とは通信のやり方や細かい仕様が違うため、橋渡しの仕組みが必要になることがあります。
+    </div>
+
+    <h2 id="mineflayer">Mineflayer は、プログラムが世界へ入る入口</h2>
+    <p>人間だけでなく、Robo のようなプログラムも世界に入ります。その体を作る道具が <a href="mineflayer.html">Mineflayer</a> です。</p>
+    <p>Mineflayer は、プログラムから Minecraft にログインし、見て、歩いて、ブロックを扱うための入口になります。Day4 で整えた「プログラムで世界に触りたい人のための入口」は、Robo の身体性にもつながります。</p>
+
+    <div class="callout" id="protocol">
+      <strong>ロボの技術メモ：プロトコル</strong><br>
+      サーバとクライアントが話すための通信の約束です。版や入口が違うと、この約束も変わります。橋渡しの仕組みは、この違いを吸収します。
+    </div>
+
+    <div class="callout" id="bot">
+      <strong>ロボの技術メモ：bot</strong><br>
+      人間の代わりにプログラムで操作されるプレイヤーです。Robo は、人間のように世界へ入り、観察や作業をするために bot の体を使います。
+    </div>
+
+    <h2 id="public-scope">入口が増えるほど、公開範囲の線引きが重要になる</h2>
+    <p>入口の作り方、守り方、内部の設定は、便利であるほど公開すると危ない情報にもなります。誰でも読める場所に置く情報と、限られた人だけが読む情報は分ける必要があります。</p>
+    <p>公開ページでは、仕組みの考え方は説明します。一方で、接続に使う具体情報、内部の設定、運用手順は載せません。これは隠し事ではなく、世界を守るための設計です。</p>
+
+    <div class="callout" id="audience">
+      <strong>ロボの技術メモ：読者集合</strong><br>
+      その情報を読める人の範囲です。世界中に公開するページ、コミュニティ内だけの記録、管理者だけが見る手順では、置いてよい情報が違います。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day4.html" style="font-size:14px">← Day4 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
