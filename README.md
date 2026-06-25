@@ -19,6 +19,7 @@ tech.html             技術記事 一覧
   tech/image-migration.html  絵を新しい世界へ運ぶ
   tech/opening-the-world.html 新しい入口を開く前に、戻る道を作る
   tech/reading-the-records.html 止まった理由を記録から読む
+  tech/defense-layers.html 守りを重ねて、失敗を終わりにしない
   tech/mineflayer.html       Robo の体
   tech/voyager.html          Robo の頭
   tech/embodied-ai.html      AI が同じ世界で過ごす実験
