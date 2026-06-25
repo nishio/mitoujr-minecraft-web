@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>絵を新しい世界へ運ぶ — 技術記事</title>
+<meta name="description" content="古い Minecraft の世界にあった絵を、新しい仕組みの地図と額へ移し替える考え方。Robo日記 Day3 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>絵を新しい世界へ運ぶ</h1>
+
+    <p><a href="../diary/day3.html">Day3</a> では、古い世界で見えていた絵を、新しい版でも見えるように移し替えました。これは、画像ファイルをコピーするだけでは終わりません。</p>
+    <p>Minecraft の世界では、画像はただの画像ではなく、地図や額、表示する場所、向き、大きさと結びついています。見た目を保つには、絵そのものと、絵が置かれていた文脈を一緒に運ぶ必要があります。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#main-thread">[メインスレッド]</a>
+        <a class="term-link" href="#tick">[tick]</a>
+        <a class="term-link" href="#item-frame">[額縁]</a>
+        <a class="term-link" href="#map-item">[Map Item]</a>
+        <a class="term-link" href="#placement">[位置と向き]</a>
+        <a class="term-link" href="#batch">[バッチ処理]</a>
+        <a class="term-link" href="#timeout">[タイムアウト]</a>
+      </div>
+    </div>
+
+    <h2 id="map">地図は、画像を運ぶためのキャンバスになる</h2>
+    <p>Minecraft の地図は、ふつうは地形を見るためのアイテムです。でも仕組みとしては、小さな絵を表示できるキャンバスでもあります。地図に画像を割り当て、それを世界の中に置けば、壁に絵があるように見せられます。</p>
+    <p>大きな絵は、複数の地図に分けて表示します。人間からは一枚の絵に見えていても、中では小さな地図の集合になっていることがあります。</p>
+
+    <h2 id="imageframe">ImageFrame は、画像を世界に貼るための道具</h2>
+    <p><a href="plugins.html#imageframe">ImageFrame</a> は、画像を Minecraft の世界の中に表示するためのプラグインです。画像を地図として扱い、それを額に入れて壁や床に並べることで、写真やロゴのような見た目を作れます。</p>
+    <p>古い仕組みで表示されていた絵を新しい仕組みへ移すときは、画像だけでなく、どの地図に分けるか、どの額に入れるか、どこに並べるかを合わせる必要があります。</p>
+
+    <h2 id="async">非同期処理は、重い仕事を分ける考え方</h2>
+    <p>画像を読み込み、必要な形へ変換し、地図に分け、世界へ置く。これを一度にやると、サーバの中心の処理を長く止めてしまいます。</p>
+    <p>そこで、絵を作る仕事と、世界に置く仕事を分けます。時間のかかる準備は裏側で進め、Minecraft の世界を直接さわる部分だけを短く実行する。これが Day3 で重要だった非同期処理の考え方です。</p>
+
+    <div class="callout" id="main-thread">
+      <strong>ロボの技術メモ：メインスレッド</strong><br>
+      Minecraft サーバの中心になる処理の流れです。世界の状態を変える処理は、ここで短く安全に行う必要があります。長く止めると、サーバ全体が不安定になります。
+    </div>
+
+    <div class="callout" id="tick">
+      <strong>ロボの技術メモ：tick</strong><br>
+      Minecraft の世界が少しずつ進む単位です。サーバは短い間隔で世界を更新します。重い処理で tick が遅れると、動きが止まったり遅れたりします。
+    </div>
+
+    <h2 id="item-frame">額縁と Map Item</h2>
+    <p>絵を世界の中に置くときは、見た目の画像だけでなく、それを支える Minecraft 側の実体も必要です。代表的なのが <strong>額縁</strong> と <strong>Map Item</strong> です。</p>
+    <p id="map-item">Map Item は、地図として扱われるアイテムです。画像を割り当てた地図を額縁に入れることで、壁に絵が貼られているように見えます。</p>
+
+    <h2 id="placement">位置と向きも、絵の一部</h2>
+    <p>絵を移すときに必要なのは、画像データだけではありません。どの場所にあったか、どちらを向いていたか、何枚分の大きさだったか。そうした情報がそろって、はじめて元の見え方に近づきます。</p>
+    <p>だから Day3 の作業は、「画像を復元する」だけではなく、「世界の中の配置を復元する」作業でもありました。</p>
+
+    <h2 id="batch">バッチ処理とタイムアウト</h2>
+    <p>たくさんの絵を一気に処理すると、サーバに負荷がかかります。そこで、処理を小さな単位に分けて、少しずつ進めます。このように、まとまった作業を順番に処理する考え方を <strong>バッチ処理</strong> と呼びます。</p>
+    <p id="timeout">また、処理が長く止まっているように見えると、サーバは異常だと判断することがあります。これが <strong>タイムアウト</strong> です。重い仕事を分けるのは、タイムアウトを避けるためでもあります。</p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day3.html" style="font-size:14px">← Day3 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

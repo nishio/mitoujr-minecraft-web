@@ -16,6 +16,7 @@ tech.html             技術記事 一覧
   tech/griefing-defense.html こわされても、もとにもどせる
   tech/iac.html              世界を“せっけい図”で持つ
   tech/plugins.html          プラグインは、世界に機能を足す部品
+  tech/image-migration.html  絵を新しい世界へ運ぶ
   tech/mineflayer.html       Robo の体
   tech/voyager.html          Robo の頭
   tech/embodied-ai.html      AI が同じ世界で過ごす実験
