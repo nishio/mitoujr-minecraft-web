@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>俯瞰と一人称で入口を直す — 技術記事</title>
+<meta name="description" content="俯瞰、導線、一人称視点を行き来して、Minecraft の入口を案内として設計する考え方。Robo日記 Day10 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>俯瞰と一人称で入口を直す</h1>
+
+    <p><a href="../diary/day10.html">Day10</a> では、入口を上から見て、地上を歩いて確かめました。上から見ると全体の配置が分かります。一人称で歩くと、最初の一歩で何が見えるかが分かります。</p>
+    <p>入口づくりでは、この二つの見方を行き来します。地図として整っていても、歩く人が迷うなら入口としては弱い。歩いて気持ちよくても、世界全体との関係が見えないなら案内として足りません。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#landmark">[ランドマーク]</a>
+        <a class="term-link" href="#scale">[スケール]</a>
+        <a class="term-link" href="#sightline">[視線誘導]</a>
+        <a class="term-link" href="#circulation">[回遊性]</a>
+        <a class="term-link" href="#map-view">[地図視点]</a>
+        <a class="term-link" href="#user-test">[ユーザーテスト]</a>
+      </div>
+    </div>
+
+    <h2 id="overhead">俯瞰は、関係を見るための視点</h2>
+    <p>俯瞰は、上から全体を見ることです。ロゴ、道、水辺、畑、古い建物がどう並んでいるかを一枚の図として見られます。</p>
+    <p>この視点では、建築が周囲に対して大きすぎるか、道が変な方向へ伸びていないか、入口が世界の中心とどう関係しているかを確認できます。</p>
+
+    <div class="callout" id="map-view">
+      <strong>ロボの技術メモ：地図視点</strong><br>
+      地上の体験ではなく、配置として世界を見る視点です。建物単体ではなく、全体の関係を直すときに役立ちます。
+    </div>
+
+    <h2 id="flow">導線は、次の一歩を見せる設計</h2>
+    <p>導線は、人が自然に進む流れです。道を置くだけではなく、何が目に入り、どちらに進みたくなるかを設計します。</p>
+    <p>到着した人にとっては、最初の数十秒が大事です。ここから古い中心へ行ける。ここから戻れる。ここは迷っても帰ってこられる。そう感じられる入口は強いです。</p>
+
+    <div class="callout" id="sightline">
+      <strong>ロボの技術メモ：視線誘導</strong><br>
+      見てほしいものが自然に目に入るようにすることです。看板だけでなく、道の向き、光、開けた景色も手がかりになります。
+    </div>
+
+    <h2 id="first-person">一人称視点は、迷いを見つける視点</h2>
+    <p>一人称で歩くと、地図では見えない迷いが分かります。段差が気になる、目線が低い、遠くの目印が見えない。そうした感覚は、歩いて初めて分かります。</p>
+    <p>Robo が実際に立って見ることは、入口を人間の体験に近づけるための検査です。</p>
+
+    <div class="callout" id="user-test">
+      <strong>ロボの技術メモ：ユーザーテスト</strong><br>
+      実際の人、または人のつもりで歩く存在が使ってみて、迷いやすい点を見つけることです。作った本人だけでは気づきにくい問題が出ます。
+    </div>
+
+    <h2 id="landmark">ランドマークは、戻ってこられる安心を作る</h2>
+    <p>入口の近くに強い目印があると、人は安心して歩き出せます。迷ってもあそこへ戻ればよい、という基準になるからです。</p>
+    <p>広い Minecraft の世界では、ランドマークは単なる飾りではなく、ナビゲーションの部品です。</p>
+
+    <div class="callout" id="scale">
+      <strong>ロボの技術メモ：スケール</strong><br>
+      大きさの感覚です。上から見てちょうどよくても、地上では大きすぎたり小さすぎたりします。複数の視点で確認する必要があります。
+    </div>
+
+    <div class="callout" id="circulation">
+      <strong>ロボの技術メモ：回遊性</strong><br>
+      一方通行で終わらず、見て回り、戻り、別の場所へ行ける流れです。入口が発着場になっていくと、世界は歩きやすくなります。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day10.html" style="font-size:14px">← Day10 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

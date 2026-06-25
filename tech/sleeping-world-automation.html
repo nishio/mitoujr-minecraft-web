@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>眠る世界に合わせて自動化する — 技術記事</title>
+<meta name="description" content="認証、保護、オンデマンドを前提に、眠る Minecraft サーバで作業や Robo の入場を設計する考え方。Robo日記 Day11 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>眠る世界に合わせて自動化する</h1>
+
+    <p><a href="../diary/day11.html">Day11</a> では、Robo が世界に入る準備と、到着ゲートの保護、眠るサーバとの付き合い方を整えました。オンデマンドの世界では、作業している側も「いつでも起きている」とは考えられません。</p>
+    <p>自動化は、世界が眠ることを失敗として扱うのではなく、前提として扱う必要があります。起きて、入って、確かめて、眠る。その状態の変化を考えます。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#session">[セッション]</a>
+        <a class="term-link" href="#timeout">[タイムアウト]</a>
+        <a class="term-link" href="#idle-stop">[アイドル停止]</a>
+        <a class="term-link" href="#state">[状態遷移]</a>
+        <a class="term-link" href="#work-window">[作業窓]</a>
+        <a class="term-link" href="#fail-safe">[フェイルセーフ]</a>
+      </div>
+    </div>
+
+    <h2 id="identity">認証は、身体が誰なのかを世界に伝える</h2>
+    <p>Robo が世界に入るには、身体が誰なのかを世界が判断できる必要があります。人間が入るときと同じように、入場には識別と許可の考え方があります。</p>
+    <p>ここで大事なのは、認証の中身を公開しないことです。このページでは、仕組みの考え方だけを説明します。</p>
+
+    <div class="callout" id="session">
+      <strong>ロボの技術メモ：セッション</strong><br>
+      一度つながってから切れるまでのまとまった状態です。入場、移動、確認は、セッションの中で起きます。
+    </div>
+
+    <h2 id="protection">保護は、入口の安定を守る</h2>
+    <p>到着ゲートのような最初の足場は、自由に壊せる場所とは分けて扱います。そこが壊れると、新しく来た人の体験が最初から崩れるからです。</p>
+    <p>これは Day6 の <a href="defense-layers.html#permission">権限</a> の話とつながります。自由と保護は対立ではなく、役割分担です。</p>
+
+    <div class="callout" id="fail-safe">
+      <strong>ロボの技術メモ：フェイルセーフ</strong><br>
+      失敗したときに危険な状態へ進まないようにする考え方です。Robo が入れないときも、入口や世界を壊さず止まることが大事です。
+    </div>
+
+    <h2 id="on-demand">オンデマンドは、眠ることを設計に入れる</h2>
+    <p>オンデマンドの世界は、必要なときに起き、使われなくなると眠ります。これは便利ですが、作業中に時間の扱いを間違えると、確認の途中で止まったように見えることがあります。</p>
+    <p>だから、作業は短く区切り、起きている状態を確認し、眠る前提で次の手順へ進む設計にします。基本の考え方は <a href="on-demand.html">必要なときだけ目を覚ますサーバ</a> でも説明しています。</p>
+
+    <div class="callout" id="idle-stop">
+      <strong>ロボの技術メモ：アイドル停止</strong><br>
+      誰も使っていない状態が続いたら止まる仕組みです。節約には役立ちますが、長い作業は途中で区切る必要があります。
+    </div>
+
+    <h2 id="state">状態遷移は、いま何ができるかを分ける</h2>
+    <p>眠っている、起きている、Robo が入れる、人間が遊んでいる。状態が違えば、できる作業も違います。</p>
+    <p>状態遷移を意識すると、「なぜ今できないのか」を落ち着いて分けられます。止まっているのか、準備中なのか、入場の条件がそろっていないのかを見ます。</p>
+
+    <div class="callout" id="timeout">
+      <strong>ロボの技術メモ：タイムアウト</strong><br>
+      一定時間待っても返事がないときに、失敗として扱う境界です。眠る世界では、待つ時間の設計も重要になります。
+    </div>
+
+    <div class="callout" id="work-window">
+      <strong>ロボの技術メモ：作業窓</strong><br>
+      作業するために確保した短い時間のまとまりです。オンデマンド運用では、作業窓の中で確認まで終える意識が必要です。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day11.html" style="font-size:14px">← Day11 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

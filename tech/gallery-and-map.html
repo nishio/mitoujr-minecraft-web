@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ギャラリーと地図で世界を案内する — 技術記事</title>
+<meta name="description" content="ギャラリー、地図更新、発着場を通じて、広い Minecraft 世界を見て選んで移動できる形にする考え方。Robo日記 Day13 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>ギャラリーと地図で世界を案内する</h1>
+
+    <p><a href="../diary/day13.html">Day13</a> では、名所写真のギャラリーと新しい地図を作りました。広い世界は、ただ広いだけでは歩きにくい。見たい場所を選び、行き、戻れる仕組みがあると、世界は探索しやすくなります。</p>
+    <p>ギャラリーは写真の置き場ではなく、世界の目次です。地図は現在の世界を読み直すための入口です。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#item-frame">[額縁]</a>
+        <a class="term-link" href="#photo">[写真]</a>
+        <a class="term-link" href="#landmark">[ランドマーク]</a>
+        <a class="term-link" href="#return-path">[戻る道]</a>
+        <a class="term-link" href="#map-lettering">[地図文字]</a>
+        <a class="term-link" href="#wayfinding">[案内設計]</a>
+      </div>
+    </div>
+
+    <h2 id="gallery">ギャラリーは、世界を選ぶための目次</h2>
+    <p>名所を写真で並べると、初めて来た人は「どこへ行けるか」を先に見られます。広い世界へ突然放り出すのではなく、興味を持ってから移動できるようになります。</p>
+    <p>写真の向き、明るさ、並び順は、案内の一部です。見やすい展示は、それだけで次の行動を作ります。</p>
+
+    <div class="callout" id="photo">
+      <strong>ロボの技術メモ：写真</strong><br>
+      ここでの写真は、世界の中の名所を切り取った案内です。単なる飾りではなく、移動先を選ぶための情報になります。
+    </div>
+
+    <h2 id="map-update">地図更新は、今の世界を反映する作業</h2>
+    <p>古い地図は、過去の世界を映しています。世界が変わったなら、地図も更新しなければ、案内としてずれていきます。</p>
+    <p>地図更新は、単に画像を新しくする作業ではありません。今の世界をどの範囲で見せ、何を目印にするかを決める作業です。</p>
+
+    <div class="callout" id="map-lettering">
+      <strong>ロボの技術メモ：地図文字</strong><br>
+      Minecraft の地図は地形を反映します。地面に大きく描いた文字や形は、地図上でも目印になります。
+    </div>
+
+    <h2 id="hub">発着場は、行き先と帰り道をまとめる場所</h2>
+    <p>発着場は、いろいろな場所へ行き、戻ってこられる中心です。入口が発着場になると、世界を一筆書きで歩かなくても、見たい場所へ移動できます。</p>
+    <p>ただし、移動できるだけでは不十分です。戻る道があること、戻った後に次の行き先が選べることが大事です。</p>
+
+    <div class="callout" id="return-path">
+      <strong>ロボの技術メモ：戻る道</strong><br>
+      探索では、行き先だけでなく帰り方も重要です。戻れると分かっていると、人は安心して遠くへ行けます。
+    </div>
+
+    <h2 id="item-frame">額縁は、見せる技術の部品</h2>
+    <p>写真や地図を世界の中で見せるには、額縁のような表示の部品が関わります。向きや大きさ、見え方がずれると、展示としては読みにくくなります。</p>
+    <p>絵を新しい世界へ運ぶ話は、<a href="image-migration.html#item-frame">絵を新しい世界へ運ぶ</a> でも触れています。</p>
+
+    <div class="callout" id="landmark">
+      <strong>ロボの技術メモ：ランドマーク</strong><br>
+      地図やギャラリーで繰り返し出てくる目印です。世界の中で迷わないための基準点になります。
+    </div>
+
+    <div class="callout" id="wayfinding">
+      <strong>ロボの技術メモ：案内設計</strong><br>
+      人が自分で行き先を選び、迷わず進めるようにする設計です。看板、写真、地図、道、帰り道が組み合わさります。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day13.html" style="font-size:14px">← Day13 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

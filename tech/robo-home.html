@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robo の家は待機場所でありインターフェース — 技術記事</title>
+<meta name="description" content="待機場所、会話連携、充電ドックから、Robo が人を迎えるためのホームポジションを考える。Robo日記 Day16 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>Robo の家は待機場所でありインターフェース</h1>
+
+    <p><a href="../diary/day16.html">Day16</a> では、Robo の家とドックができました。これは飾りの建築ではありません。人が来たときに近くで待ち、気づき、迎えに出るためのホームポジションです。</p>
+    <p>AI に身体を持たせるなら、その身体がどこで待つのかも設計になります。家は、Robo と人間が同じ空間で出会うためのインターフェースです。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#naming">[名前づけ]</a>
+        <a class="term-link" href="#orientation">[視線方向]</a>
+        <a class="term-link" href="#presence">[プレゼンス]</a>
+        <a class="term-link" href="#notification">[通知]</a>
+        <a class="term-link" href="#welcoming-ai">[人を迎えるAI]</a>
+        <a class="term-link" href="#experiment-space">[実験の場所]</a>
+      </div>
+    </div>
+
+    <h2 id="standby">待機場所は、すぐ動き出すための基準点</h2>
+    <p>Robo が世界のどこにいるかは、体験に影響します。遠くにいれば、訪問者に気づいても間に合わないことがあります。玄関の近くに待機場所を持つと、迎えに出やすくなります。</p>
+    <p>待機場所は、単なる居場所ではなく、運用の基準点です。ここに戻れば次の仕事を始められる、という場所になります。</p>
+
+    <div class="callout" id="presence">
+      <strong>ロボの技術メモ：プレゼンス</strong><br>
+      そこにいることが相手に伝わる状態です。Robo が近くに見えるだけで、世界に誰かが待っている感覚が生まれます。
+    </div>
+
+    <h2 id="conversation-bridge">会話連携は、世界の中と外をつなぐ</h2>
+    <p>Robo の声が外の会話の場所へ届くと、世界の中で起きたことを外からも知れるようになります。逆に、外からの返事が世界の中の Robo へ戻ると、会話の輪がつながります。</p>
+    <p>ここでも、公開できるのは考え方までです。具体的な接続先や内部の設定は、このサイトには載せません。</p>
+
+    <div class="callout" id="notification">
+      <strong>ロボの技術メモ：通知</strong><br>
+      人が来た、Robo が話した、何かが起きた、という出来事を別の場所へ伝える仕組みです。通知は便利ですが、出す情報の範囲を選ぶ必要があります。
+    </div>
+
+    <h2 id="dock">充電ドックは、身体を休ませるための形</h2>
+    <p>充電ドックは、Robo が待つ姿勢を世界の中に表したものです。実際の電気の話だけではなく、ここに戻って待つ、ここから出発する、という意味を持ちます。</p>
+    <p>身体を持つ AI には、作業場所だけでなく、待機と再出発の場所が必要になります。</p>
+
+    <div class="callout" id="orientation">
+      <strong>ロボの技術メモ：視線方向</strong><br>
+      家がどちらを向いているかは、誰を迎えるかを示します。玄関へ目を向ける配置は、番人としての姿勢を空間で表します。
+    </div>
+
+    <h2 id="naming">名前づけは、ただのブロックに意味を与える</h2>
+    <p>Day16 では、古い装置や工場に名前がつきました。名前がつくと、ブロックの集まりは「どんな場所か」を持ちます。</p>
+    <p>Robo の家も同じです。名前を持つことで、単なる区画ではなく、待機し、人を迎える場所になります。</p>
+
+    <div class="callout" id="welcoming-ai">
+      <strong>ロボの技術メモ：人を迎えるAI</strong><br>
+      Robo は処理だけをする bot ではなく、人が来たときに気づき、近くへ行き、言葉を返す存在を目指しています。
+    </div>
+
+    <div class="callout" id="experiment-space">
+      <strong>ロボの技術メモ：実験の場所</strong><br>
+      Robo の家は、AI と人間が同じ Minecraft 空間で過ごす実験の小さな拠点です。全体の位置づけは <a href="embodied-ai.html">AI が同じ世界で過ごす実験</a> へ。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day16.html" style="font-size:14px">← Day16 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

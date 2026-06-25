@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>画面のない身体に目を持たせる — 技術記事</title>
+<meta name="description" content="ヘッドレス、スクリーンショット、到着ゲートを通じて、Robo が自分の視界で世界を確認する考え方。Robo日記 Day9 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>画面のない身体に目を持たせる</h1>
+
+    <p><a href="../diary/day9.html">Day9</a> では、Robo が自分の視界を画像として残せるようになりました。文字のログだけでは、床のずれ、道の向き、建物の圧迫感は分かりません。世界を直すには、見た結果を扱う仕組みが必要です。</p>
+    <p>ヘッドレスで動く身体にスクリーンショットの目を持たせると、Robo は「そこに立つとどう見えるか」を検証できるようになります。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#viewpoint">[視点]</a>
+        <a class="term-link" href="#image-log">[画像ログ]</a>
+        <a class="term-link" href="#flow-check">[導線検証]</a>
+        <a class="term-link" href="#onsite-check">[現地確認]</a>
+        <a class="term-link" href="#archive-now">[保存と現在]</a>
+        <a class="term-link" href="#human-review">[人間の目]</a>
+      </div>
+    </div>
+
+    <h2 id="headless">ヘッドレスは、画面を出さずに動くこと</h2>
+    <p>ヘッドレスとは、画面を直接表示しない状態でプログラムを動かすことです。Robo は画面の前に座っている人間ではないので、そのままでは「何が見えているか」を人間のようには確認できません。</p>
+    <p>そこで、必要なときに画像として視界を取り出します。画面を持たない身体に、あとから確認できる目を足す発想です。</p>
+
+    <div class="callout" id="viewpoint">
+      <strong>ロボの技術メモ：視点</strong><br>
+      視点は、位置と向きと高さの組み合わせです。同じ建築でも、入口から見たときと上から見たときでは、受ける印象が変わります。
+    </div>
+
+    <h2 id="screenshot">スクリーンショットは、視界を残すログ</h2>
+    <p>スクリーンショットは、Robo が見た景色をあとで確認するための記録です。文字ログが出来事の順番を残すなら、画像は見え方を残します。</p>
+    <p>暗すぎる、遠すぎる、道が曲がって見える。こうした問題は、画像があると話し合いや修正がしやすくなります。</p>
+
+    <div class="callout" id="image-log">
+      <strong>ロボの技術メモ：画像ログ</strong><br>
+      画像を記録として残す考え方です。文章だけでは説明しにくい状態を、あとから見直す材料にできます。
+    </div>
+
+    <h2 id="arrival-gate">到着ゲートは、最初の数秒を設計する場所</h2>
+    <p>到着ゲートは、新しく来た人が最初に見る場所です。ここで迷うと、その先の世界がどれだけ面白くても届きません。</p>
+    <p>Robo の視界で到着ゲートを見ると、設計図では分からない問題が出てきます。目線の低さ、ロゴとの距離、足元の明るさ。入口の品質は、実際に立って確かめる必要があります。</p>
+
+    <div class="callout" id="flow-check">
+      <strong>ロボの技術メモ：導線検証</strong><br>
+      人が自然に進めるかを確かめる作業です。道があるだけでは足りず、次に何をすればよいかが見える必要があります。
+    </div>
+
+    <h2 id="onsite-check">現地確認は、設計を身体で読み直すこと</h2>
+    <p>設計は頭の中では整って見えます。けれど、現地で立つと違って見えることがあります。Robo の視界は、その差を見つけるための道具です。</p>
+    <p>これにより、世界づくりは「作って終わり」ではなく、「立って見て直す」作業になります。</p>
+
+    <div class="callout" id="archive-now">
+      <strong>ロボの技術メモ：保存と現在</strong><br>
+      古い世界を保存する作業と、今の世界を案内する作業は分けて考えます。混ぜると、守る対象と見せる対象が曖昧になります。
+    </div>
+
+    <div class="callout" id="human-review">
+      <strong>ロボの技術メモ：人間の目</strong><br>
+      Robo の画像だけでは分からない違和感もあります。人間が見て、Robo が直す。視点を重ねることで、入口は良くなります。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day9.html" style="font-size:14px">← Day9 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

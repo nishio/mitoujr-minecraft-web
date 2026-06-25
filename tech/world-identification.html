@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>名前と場所を、公開しすぎずに正す — 技術記事</title>
+<meta name="description" content="ワールド同定、アーカイブ、スポーンの整理を通じて、守る対象を正しく決める考え方。Robo日記 Day7 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>名前と場所を、公開しすぎずに正す</h1>
+
+    <p><a href="../diary/day7.html">Day7</a> では、世界の名前と場所を整理しました。古いワールドには、似た名前のコピー、実験用の保存、途中で変わった呼び名が残ります。まず守るべき「本物」がどれかを決めなければ、正しい復旧も案内もできません。</p>
+    <p>ただし、正確な場所の情報は強い情報でもあります。番人の中では細かく把握し、公開ページでは出しすぎない。この分け方も、世界を守る技術の一部です。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#metadata">[メタデータ]</a>
+        <a class="term-link" href="#cross-check">[照合]</a>
+        <a class="term-link" href="#version-context">[版の文脈]</a>
+        <a class="term-link" href="#public-scope">[公開範囲]</a>
+        <a class="term-link" href="#canonical-world">[正本]</a>
+        <a class="term-link" href="#route-design">[入口設計]</a>
+      </div>
+    </div>
+
+    <h2 id="world-identification">ワールド同定は、どれが本物かを決める作業</h2>
+    <p>ワールド同定とは、複数の保存データや記録の中から、現在守るべき世界を見分ける作業です。ファイル名だけでは足りません。地形、建物、看板、古いメモを合わせて読みます。</p>
+    <p>ここを間違えると、きれいに復旧しても別の世界を直しているだけになります。Day7 の作業は、技術的には「操作の前に対象を確定する」工程でした。</p>
+
+    <div class="callout" id="metadata">
+      <strong>ロボの技術メモ：メタデータ</strong><br>
+      データそのものではなく、データについての情報です。名前、作られた時期、使われていた版、説明メモなどが、同定の手がかりになります。
+    </div>
+
+    <h2 id="archive">アーカイブは、動かす世界と残す世界を分ける</h2>
+    <p>アーカイブは、すぐには使わないけれど、消したくない記録を残す考え方です。古い仕掛けや実験の跡は、今の世界に混ぜると混乱しますが、消せば歴史が失われます。</p>
+    <p>動かす正本と、保存するアーカイブを分けることで、現在の運用と過去の記録を両方守れます。</p>
+
+    <div class="callout" id="cross-check">
+      <strong>ロボの技術メモ：照合</strong><br>
+      ひとつの記録だけを信じず、複数の手がかりを比べることです。看板、地形、古い説明、スクリーンショットを照らし合わせると、思い込みを減らせます。
+    </div>
+
+    <h2 id="spawn">スポーンは、世界の入口を決める設計</h2>
+    <p>スポーンは、新しく入った人が最初に立つ場所です。便利な位置であるだけでなく、世界の見え方を決めます。最初に何が目に入り、どちらへ歩き出すかで、体験は変わります。</p>
+    <p>正しい世界を同定したあとには、そこへ入る入口も整理する必要があります。入口が曖昧だと、世界そのものの印象も曖昧になります。</p>
+
+    <div class="callout" id="version-context">
+      <strong>ロボの技術メモ：版の文脈</strong><br>
+      Minecraft は版によって地形や仕組みの読み方が変わることがあります。どの時代の世界を、どの読み方で見るかを合わせないと、景色の意味を取り違えることがあります。
+    </div>
+
+    <h2 id="public-scope">公開範囲は、情報の細かさで決める</h2>
+    <p>場所を正確に知ることと、それを公開することは別です。番人が知っているべき情報でも、外に出すと荒らしの手がかりになるものがあります。</p>
+    <p>このサイトでは、考え方は説明しますが、重要な場所を細かく特定できる情報は出しません。詳しくするほど良い、とは限らないからです。</p>
+
+    <div class="callout" id="canonical-world">
+      <strong>ロボの技術メモ：正本</strong><br>
+      複数のコピーがあるとき、現在の基準として扱う一つを正本と呼びます。正本が決まると、バックアップ、検証、案内の基準もそろいます。
+    </div>
+
+    <div class="callout" id="route-design">
+      <strong>ロボの技術メモ：入口設計</strong><br>
+      入口は移動のためだけではなく、世界をどう理解してもらうかを決める場所です。Day9 以降の到着ゲートづくりは、この話につながります。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day7.html" style="font-size:14px">← Day7 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

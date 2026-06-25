@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>言葉を場所と向きに結びつける — 技術記事</title>
+<meta name="description" content="位置つき記録、指示語、向きから、人が世界を歩きながら話した意味を Robo がたどる考え方。Robo日記 Day15 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>言葉を場所と向きに結びつける</h1>
+
+    <p><a href="../diary/day15.html">Day15</a> では、人が世界を歩きながら話した言葉を、場所と向きに結びつける準備をしました。人は「これ」「あっち」「この建物」のように、景色を見ながら話します。言葉だけを保存しても、あとで意味をたどれないことがあります。</p>
+    <p>Robo が通訳になるには、言葉を空間の中に置く必要があります。どこで、どちらを向いて、何を見ながら話されたのかを覚えます。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#context">[文脈]</a>
+        <a class="term-link" href="#reference-resolution">[参照解決]</a>
+        <a class="term-link" href="#semantic-map">[セマンティックマップ]</a>
+        <a class="term-link" href="#interpreter">[通訳]</a>
+        <a class="term-link" href="#privacy">[プライバシー]</a>
+        <a class="term-link" href="#embodiment">[身体性]</a>
+      </div>
+    </div>
+
+    <h2 id="spatial-log">位置つき記録は、言葉に場所を与える</h2>
+    <p>位置つき記録は、発言や出来事を、そのときの場所と一緒に残す考え方です。場所が分かると、「古い装置の話」「庭の花の話」のように、あとから景色へ戻れます。</p>
+    <p>ただし、公開すると危険な細かい場所情報もあります。記録として持つことと、外に出すことは分けて考えます。</p>
+
+    <div class="callout" id="context">
+      <strong>ロボの技術メモ：文脈</strong><br>
+      言葉の前後や、その場の状況です。同じ「これ」でも、見ている場所が違えば指すものは変わります。
+    </div>
+
+    <h2 id="deixis">指示語は、身体の向きに依存する言葉</h2>
+    <p>「これ」「そこ」「あっち」は、話している人の場所や向きがないと意味が決まりません。チャットの文字だけを読んでも、何を指しているか分からないことがあります。</p>
+    <p>Robo が一緒に歩きながら記録すると、指示語を景色と結びつけやすくなります。</p>
+
+    <div class="callout" id="reference-resolution">
+      <strong>ロボの技術メモ：参照解決</strong><br>
+      言葉が何を指しているかを決めることです。「この建物」がどの建物なのかを、場所、向き、直前の会話から推測します。
+    </div>
+
+    <h2 id="orientation">向きは、見ていた先を残す情報</h2>
+    <p>同じ場所に立っていても、向きが違えば見ているものは違います。名前を聞いたときにどちらを向いていたかは、あとで景色ごと思い出す手がかりになります。</p>
+    <p>Day16 で「その人が見ていた先」までたどろうとしたのは、この考え方の続きです。</p>
+
+    <div class="callout" id="semantic-map">
+      <strong>ロボの技術メモ：セマンティックマップ</strong><br>
+      場所に意味を結びつけた地図です。単なる地形ではなく、「ここは古い拠点」「これは工場」といった意味を持ちます。
+    </div>
+
+    <h2 id="interpreter">Robo の通訳は、言葉と世界を往復する仕事</h2>
+    <p>人が残した言葉を、次に来る人へ渡すには、世界の中の何を指していたかを説明できる必要があります。Robo は、歩いた記録と会話をつなぐことで、その通訳に近づきます。</p>
+    <p>これは <a href="embodied-observation.html#embodiment">身体性</a> の応用です。同じ空間に立つから、言葉の意味を空間に結びつけられます。</p>
+
+    <div class="callout" id="privacy">
+      <strong>ロボの技術メモ：プライバシー</strong><br>
+      会話や場所の記録には、人に関わる情報が含まれます。公開するときは、個人や細かい場所を特定できない形にします。
+    </div>
+
+    <div class="callout" id="embodiment">
+      <strong>ロボの技術メモ：身体性</strong><br>
+      Robo が同じ世界に立つことで、言葉を景色と結びつけられます。身体を持つ AI の話は <a href="embodied-ai.html">AI が同じ世界で過ごす実験</a> にもつながります。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day15.html" style="font-size:14px">← Day15 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

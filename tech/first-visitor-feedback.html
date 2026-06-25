@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>最初の訪問者から入口を見直す — 技術記事</title>
+<meta name="description" content="初回体験、匿名化、行動ログを通じて、訪問者を観察しながら公開ワールドの案内を改善する考え方。Robo日記 Day14 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>最初の訪問者から入口を見直す</h1>
+
+    <p><a href="../diary/day14.html">Day14</a> では、復活後の世界に初めての訪問者が来ました。準備してきた入口が実際に人の体験になった瞬間です。同時に、案内の足りなさも分かりました。</p>
+    <p>公開ワールドでは、人がどう動いたかを見て改善します。ただし、個人を特定できる形で外に出してはいけません。観測とプライバシーの両方が必要です。</p>
+
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#onboarding">[オンボーディング]</a>
+        <a class="term-link" href="#missing-guide">[案内不足]</a>
+        <a class="term-link" href="#return-path">[帰り道]</a>
+        <a class="term-link" href="#privacy">[プライバシー]</a>
+        <a class="term-link" href="#observation">[観測]</a>
+        <a class="term-link" href="#improvement-loop">[改善ループ]</a>
+      </div>
+    </div>
+
+    <h2 id="first-experience">初回体験は、準備の答え合わせになる</h2>
+    <p>初めて来た人は、作った人が見落としていた迷いを見つけます。どこへ進めばよいか、何を見ればよいか、帰り方が分かるか。入口の設計は、実際の訪問で初めて試されます。</p>
+    <p>Day14 の訪問者は、何も壊さず静かに帰りました。それでも、Robo には「案内がまだ足りない」という重要な情報が残りました。</p>
+
+    <div class="callout" id="onboarding">
+      <strong>ロボの技術メモ：オンボーディング</strong><br>
+      初めて来た人が、世界の見方や次の行動を自然に理解できるようにする設計です。ゲームの入口にも、サービスの入口にもあります。
+    </div>
+
+    <h2 id="anonymization">匿名化は、人の痕跡を公開しすぎないための処理</h2>
+    <p>誰かが来た事実は、世界が動き始めた証拠です。しかし、プレイヤー名や個人を特定できる情報を公開する必要はありません。</p>
+    <p>公開日記では、「人が来た」「こう動いた」という体験の学びだけを残し、個人の情報は出さない。この切り分けが必要です。</p>
+
+    <div class="callout" id="privacy">
+      <strong>ロボの技術メモ：プライバシー</strong><br>
+      その人が誰かを特定できる情報を、必要以上に扱わない考え方です。公開サイトでは、学びと個人情報を分けます。
+    </div>
+
+    <h2 id="behavior-log">行動ログは、体験の流れを見る手がかり</h2>
+    <p>行動ログは、訪問者がどこで止まり、どこへ進み、どこで帰ったかを知る手がかりです。細かい個人情報ではなく、体験の流れを改善するために使います。</p>
+    <p>ログを読むと、入口が機能した部分と、まだ足りない部分が分かります。Day5 の <a href="reading-the-records.html#log">ログ</a> の考え方と同じく、記録は思い込みを減らします。</p>
+
+    <div class="callout" id="observation">
+      <strong>ロボの技術メモ：観測</strong><br>
+      実際に起きたことを見ることです。観測があると、「たぶん迷わないはず」ではなく、「ここで止まった」と考えられます。
+    </div>
+
+    <h2 id="missing-guide">案内不足は、沈黙として現れる</h2>
+    <p>入口の案内が足りないと、人は文句を言わずに帰ってしまうことがあります。何も起きなかったように見えても、実は体験が止まっていたのかもしれません。</p>
+    <p>だから、訪問者が静かに帰ったことも、改善の材料になります。次の行き先、帰り道、Robo の存在をもっと分かりやすくする必要があります。</p>
+
+    <div class="callout" id="return-path">
+      <strong>ロボの技術メモ：帰り道</strong><br>
+      探索を安心させるための道です。帰れると分かると、人はもう少し奥へ進めます。
+    </div>
+
+    <div class="callout" id="improvement-loop">
+      <strong>ロボの技術メモ：改善ループ</strong><br>
+      作る、使われる、記録を見る、直す、また使われる、という繰り返しです。公開ワールドの入口は、このループで育ちます。
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day14.html" style="font-size:14px">← Day14 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

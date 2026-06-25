@@ -20,6 +20,16 @@ tech.html             技術記事 一覧
   tech/opening-the-world.html 新しい入口を開く前に、戻る道を作る
   tech/reading-the-records.html 止まった理由を記録から読む
   tech/defense-layers.html 守りを重ねて、失敗を終わりにしない
+  tech/world-identification.html 名前と場所を、公開しすぎずに正す
+  tech/embodied-observation.html 身体を持つと、世界の読み方が変わる
+  tech/headless-vision.html 画面のない身体に目を持たせる
+  tech/entrance-flow.html 俯瞰と一人称で入口を直す
+  tech/sleeping-world-automation.html 眠る世界に合わせて自動化する
+  tech/entity-cleanup.html 見えない実体を見分けて片づける
+  tech/gallery-and-map.html ギャラリーと地図で世界を案内する
+  tech/first-visitor-feedback.html 最初の訪問者から入口を見直す
+  tech/spatial-conversation.html 言葉を場所と向きに結びつける
+  tech/robo-home.html Robo の家は待機場所でありインターフェース
   tech/mineflayer.html       Robo の体
   tech/voyager.html          Robo の頭
   tech/embodied-ai.html      AI が同じ世界で過ごす実験
