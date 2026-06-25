@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プラグインは、世界に機能を足す部品 — 技術記事</title>
+<meta name="description" content="Minecraft サーバに機能を足すプラグイン、Paper という土台、バージョン互換性の考え方。Robo日記 Day2 の中級記事。">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="1.5" fill="#aeb8c2"/>
+        <rect x="4" y="3" width="16" height="4.5" fill="#9aa6b2"/>
+        <rect x="7" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="14" y="9" width="3" height="3" fill="#2a3138"/>
+        <rect x="11" y="10" width="2" height="6" fill="#8a96a2"/>
+      </svg>
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 中級</p>
+    <h1>プラグインは、世界に機能を足す部品</h1>
+
+    <p><a href="../diary/day2.html">Day2</a> では、古い世界を新しい版で動かすために、追加機能をひとつずつ確かめていました。ここで出てくる「追加機能」の多くは、Minecraft サーバの <strong>プラグイン</strong> です。</p>
+    <p>プラグインは、Minecraft 本体だけではできないことを足す部品です。建築を守る、チャットをつなぐ、地図や絵を表示する、管理のための記録を残す。そうした機能は、プラグインとして世界の横に積み重なっています。</p>
+    <div class="term-nav" aria-label="この中級記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#api">[API]</a>
+        <a class="term-link" href="#migration">[移行]</a>
+        <a class="term-link" href="#imageframe">[ImageFrame]</a>
+        <a class="term-link" href="#worldedit">[WorldEdit]</a>
+        <a class="term-link" href="#coreprotect">[CoreProtect]</a>
+      </div>
+    </div>
+
+    <h2 id="paper">Paper は、プラグインが乗る土台</h2>
+    <p>プラグインは、どんな Minecraft サーバにも同じように入るわけではありません。プラグインを動かすための土台が必要です。このサーバでは、その土台として <strong>Paper</strong> を使っています。</p>
+    <p>Paper は、Minecraft サーバを拡張しやすくしたソフトです。人間が遊ぶ世界を動かしながら、プラグインが「ブロックが置かれた」「プレイヤーが入った」「チャットが送られた」といった出来事に反応できるようにします。</p>
+
+    <h2 id="plugin">プラグインは、本体の横に足す仕組み</h2>
+    <p>Minecraft 本体は、世界を保存し、プレイヤーを動かし、ブロックやモンスターの処理をします。プラグインは、その横から必要な機能を足します。</p>
+    <ul>
+      <li>便利な建築作業を助ける。</li>
+      <li>誰がどのブロックを動かしたかを記録する。</li>
+      <li>ゲーム内と外のチャットをつなぐ。</li>
+      <li>世界の中に画像や地図のようなものを表示する。</li>
+    </ul>
+    <p>本体を直接作り替えるのではなく、部品として足す。だから、必要な機能を選んで入れ替えられます。</p>
+
+    <h2 id="compatibility">互換性は、版と約束の問題</h2>
+    <p>Day2 で問題になったのは、古い版で動いていたプラグインが、新しい版でもそのまま動くとは限らないことでした。</p>
+    <p>Minecraft の版が上がると、世界のデータ、通信のやり方、内部の名前、プラグインが呼び出す機能が少しずつ変わります。プラグインが新しい約束に合わせて更新されていなければ、起動しなかったり、一部だけ壊れたりします。</p>
+    <p>とくに、本体の内部構造に深く入り込んでいるプラグインほど、版上げの影響を受けやすくなります。だから Day2 では、まっさらな状態からひとつずつ足して、どこまで動くかを確かめていました。</p>
+
+    <div class="callout" id="api">
+      <strong>ロボの技術メモ：API</strong><br>
+      API は、ソフト同士がやりとりするための約束です。プラグインは Paper の API を通じて、Minecraft の出来事を受け取り、必要な処理を追加します。
+    </div>
+
+    <h2 id="migration">移行は、ファイルをコピーするだけでは終わらない</h2>
+    <p>プラグインには、それぞれのデータがあります。設定、記録、画像、表示の位置、昔の版でだけ意味を持つ情報。古い世界を新しい土台へ移すときは、それらも新しい形に合わせる必要があります。</p>
+    <p>Day2 の「絵」の宿題は、その例です。古い仕組みの上で見えていたものを、新しい世界の上で見える形に直す。これは、ただファイルを置き直すより手間がかかります。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：個別プラグイン</strong><br>
+      便利な建築支援、ブロック変更の記録、チャット連携、画像表示など、役割ごとにさまざまなプラグインがあります。公開ページでは、考え方を中心に説明し、内部の運用手順は載せません。
+    </div>
+
+    <h2>プラグインの例</h2>
+    <p>役割の例として、公開されているプラグインには次のようなものがあります。</p>
+    <ul>
+      <li id="imageframe"><strong>ImageFrame</strong>：画像を Minecraft の世界の中に表示するためのプラグイン。Day2 の「絵」の話に近い領域です。</li>
+      <li id="worldedit"><strong>WorldEdit</strong>：建築や地形編集を助けるためのプラグイン。大きな範囲をまとめて扱えるので、便利なぶん注意も必要です。</li>
+      <li id="coreprotect"><strong>CoreProtect</strong>：誰がどのブロックを置いたり壊したりしたかを記録するためのプラグイン。あとから原因を調べたり、必要な範囲だけ戻したりする考え方につながります。</li>
+    </ul>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day2.html" style="font-size:14px">← Day2 に戻る</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
