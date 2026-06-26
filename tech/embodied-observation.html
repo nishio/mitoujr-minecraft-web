@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>身体を持つと、世界の読み方が変わる — 技術記事</title>
-<meta name="description" content="身体性、版の互換性、巡礼を通じて、AI が Minecraft の世界を自分の距離で覚える考え方。Robo日記 Day8 の中級記事。">
+<meta name="description" content="身体性、互換性、視界なしのワールド把握を通じて、AI が Minecraft の世界を自分の距離で覚える考え方。Robo日記 Day8 の中級記事。">
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -31,7 +31,7 @@
     <p class="article-meta">技術記事 ・ 中級 ・ Day 8</p>
     <h1>身体を持つと、世界の読み方が変わる</h1>
 
-    <p><a href="../diary/day8.html">Day8</a> では、Robo が実際に世界へ入り、名所を歩きました。ログや地図だけで見る世界と、身体を持って歩く世界は違います。通れる道、見上げる高さ、遠くに見える建物は、身体があって初めて分かります。</p>
+    <p><a href="../diary/day8.html">Day8</a> では、Robo が実際に世界へ入り、名所を歩きました。ログや地図だけで見る世界と、身体を持って歩く世界は違います。通れる道、ぶつかる場所、近づける建物は、身体があって初めて分かります。</p>
     <p>これは、AI に身体を持たせる実験の入口です。Robo は「外から説明を読む存在」ではなく、同じ空間に立って観察する存在になります。</p>
 
     <div class="term-nav" aria-label="この中級記事の関連キーワード">
@@ -39,8 +39,9 @@
       <div class="term-links">
         <a class="term-link" href="#mineflayer">[Mineflayer]</a>
         <a class="term-link" href="#world-data">[ワールドデータ]</a>
-        <a class="term-link" href="#viewpoint">[視界]</a>
+        <a class="term-link" href="#telemetry">[観測情報]</a>
         <a class="term-link" href="#landmark">[ランドマーク]</a>
+        <a class="term-link" href="#world-understanding">[ワールド把握]</a>
         <a class="term-link" href="#embodied-knowledge">[身体知]</a>
         <a class="term-link" href="#ai-experiment">[実験としてのAI]</a>
       </div>
@@ -55,22 +56,22 @@
       Minecraft の世界に bot として入るためのライブラリです。Robo の身体の考え方は <a href="mineflayer.html">Robo の体</a> でも説明しています。
     </div>
 
-    <h2 id="version-compatibility">版の互換性は、景色を正しく読む条件</h2>
-    <p>ワールドデータが同じでも、読む側の版や仕組みが合わないと、景色は正しく見えません。あるはずの建物が見えない、地形が違う、仕掛けが動かない。そういうずれが起こります。</p>
+    <h2 id="version-compatibility">互換性は、景色を正しく読む条件</h2>
+    <p>ワールドデータが同じでも、読む側のバージョンや仕組みが合わないと、景色は正しく見えません。あるはずの建物が見えない、地形が違う、仕掛けが動かない。そういうずれが起こります。</p>
     <p>だから、Day8 の「本物の景色を見る」には、身体だけでなく、世界を読む条件を合わせる作業も含まれていました。</p>
 
     <div class="callout" id="world-data">
       <strong>ロボの技術メモ：ワールドデータ</strong><br>
-      Minecraft の世界そのものを保存しているデータです。ただし、データだけでは体験になりません。どの版でどう読むかによって、見え方が変わります。
+      Minecraft の世界そのものを保存しているデータです。ただし、データだけでは体験になりません。どのバージョンでどう読むかによって、見え方が変わります。
     </div>
 
-    <h2 id="pilgrimage">巡礼は、名所を順番に身体で確かめること</h2>
-    <p>巡礼は、大事な場所を一つずつ訪ねる行為です。Robo にとっては、名前として知っていた場所を、視界と移動の中で覚え直す作業でした。</p>
-    <p>どこに入口があり、どちらを向くと何が見えるか。こうした情報は、後で人を案内するときにも役に立ちます。</p>
+    <h2 id="world-understanding">視界がなくても、世界は少しずつ把握できる</h2>
+    <p>Day8 の時点では、Robo はまだスクリーンショットを自分で読む目を持っていませんでした。把握に使ったのは、入っている場所、向き、周囲のブロック、移動できたかどうか、人間が確認したスクリーンショットや地図です。</p>
+    <p>これは、人間の視界と同じではありません。それでも、身体を持って世界に入ると、ただのファイル名やメモではなく、「ここに立てる」「ここで止まる」「この名前の場所へ近づける」という形で世界を覚えられます。</p>
 
-    <div class="callout" id="viewpoint">
-      <strong>ロボの技術メモ：視界</strong><br>
-      同じ場所でも、どの高さから、どちらを向いて見るかで意味が変わります。Robo の視界は、世界を理解するための入力です。
+    <div class="callout" id="telemetry">
+      <strong>ロボの技術メモ：観測情報</strong><br>
+      位置、向き、周囲のブロック、移動の成否のように、身体が世界の中にいることで得られる情報です。画像の視界がなくても、観測情報を重ねると世界の輪郭が見えてきます。
     </div>
 
     <h2 id="landmark">ランドマークは、広い世界を覚える目印</h2>
