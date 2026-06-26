@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>眠る世界に合わせて自動化する — 技術記事</title>
-<meta name="description" content="認証、保護、オンデマンドを前提に、眠る Minecraft サーバで作業や Robo の入場を設計する考え方。Robo日記 Day11 の中級記事。">
+<meta name="description" content="アカウント、リソースパック応答、プロトコル、参照カウンタを前提に、眠る Minecraft サーバで Robo の入場を設計する考え方。Robo日記 Day11 の中級記事。">
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,27 +32,36 @@
     <h1>眠る世界に合わせて自動化する</h1>
 
     <p><a href="../diary/day11.html">Day11</a> では、Robo が世界に入る準備と、到着ゲートの保護、眠るサーバとの付き合い方を整えました。オンデマンドの世界では、作業している側も「いつでも起きている」とは考えられません。</p>
-    <p>自動化は、世界が眠ることを失敗として扱うのではなく、前提として扱う必要があります。起きて、入って、確かめて、眠る。その状態の変化を考えます。</p>
+    <p>Robo が入れない理由は一つではありませんでした。アカウントとして認証すること、サーバが求めるリソースパック応答を返すこと、Minecraft 26.x のプロトコルを正しく読むこと、入場直後の準備完了を待つことが重なります。</p>
 
     <div class="term-nav" aria-label="この中級記事の関連キーワード">
       <p class="term-nav-title">この記事の中でもう少し進む</p>
       <div class="term-links">
         <a class="term-link" href="#session">[セッション]</a>
+        <a class="term-link" href="#protocol">[プロトコル]</a>
+        <a class="term-link" href="#ref-count">[参照カウンタ]</a>
         <a class="term-link" href="#timeout">[タイムアウト]</a>
         <a class="term-link" href="#idle-stop">[アイドル停止]</a>
         <a class="term-link" href="#state">[状態遷移]</a>
-        <a class="term-link" href="#work-window">[作業窓]</a>
         <a class="term-link" href="#fail-safe">[フェイルセーフ]</a>
       </div>
     </div>
 
-    <h2 id="identity">認証は、身体が誰なのかを世界に伝える</h2>
-    <p>Robo が世界に入るには、身体が誰なのかを世界が判断できる必要があります。人間が入るときと同じように、入場には識別と許可の考え方があります。</p>
+    <h2 id="identity">アカウントは、身体が誰なのかを世界に伝える</h2>
+    <p>Robo が世界に入るには、身体が誰なのかを世界が判断できる必要があります。人間が入るときと同じように、入場にはアカウント、認証、許可の考え方があります。</p>
     <p>ここで大事なのは、認証の中身を公開しないことです。このページでは、仕組みの考え方だけを説明します。</p>
 
     <div class="callout" id="session">
       <strong>ロボの技術メモ：セッション</strong><br>
       一度つながってから切れるまでのまとまった状態です。入場、移動、確認は、セッションの中で起きます。
+    </div>
+
+    <h2 id="protocol">プロトコルは、入場後の細かい約束まで含む</h2>
+    <p>サーバにつながっただけでは、Robo がすぐに動けるとは限りません。Minecraft のバージョンが変わると、リソースパックへの応答、チャンクの読み込み完了、操作を受け付ける準備完了など、細かい約束も変わります。</p>
+    <p>Day11 の「入れない」は、単なるアカウント問題ではありません。ログインは通っていても、途中のパケットへの応答が足りなければ先へ進みません。入場直後に早すぎる操作を送ると、サーバ側ではまだ準備中として無視されることもあります。</p>
+    <div class="callout">
+      <strong>ロボの技術メモ：リソースパック応答</strong><br>
+      サーバがリソースパックを提示したとき、クライアントは受け取ったかどうかを返します。Robo のような bot も、この応答を返さないと先に進めない場合があります。
     </div>
 
     <h2 id="protection">保護は、入口の安定を守る</h2>
@@ -73,6 +82,11 @@
       誰も使っていない状態が続いたら止まる仕組みです。節約には役立ちますが、長い作業は途中で区切る必要があります。
     </div>
 
+    <div class="callout" id="ref-count">
+      <strong>ロボの技術メモ：参照カウンタ</strong><br>
+      いま世界を必要としている人や処理がいくつあるかを数える考え方です。参照がある間は起きていて、参照がゼロになったら眠ってよい、と考えるとオンデマンド運用を設計しやすくなります。
+    </div>
+
     <h2 id="state">状態遷移は、いま何ができるかを分ける</h2>
     <p>眠っている、起きている、Robo が入れる、人間が遊んでいる。状態が違えば、できる作業も違います。</p>
     <p>状態遷移を意識すると、「なぜ今できないのか」を落ち着いて分けられます。止まっているのか、準備中なのか、入場の条件がそろっていないのかを見ます。</p>
@@ -80,11 +94,6 @@
     <div class="callout" id="timeout">
       <strong>ロボの技術メモ：タイムアウト</strong><br>
       一定時間待っても返事がないときに、失敗として扱う境界です。眠る世界では、待つ時間の設計も重要になります。
-    </div>
-
-    <div class="callout" id="work-window">
-      <strong>ロボの技術メモ：作業窓</strong><br>
-      作業するために確保した短い時間のまとまりです。オンデマンド運用では、作業窓の中で確認まで終える意識が必要です。
     </div>
 
     <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day11.html" style="font-size:14px">← Day11 に戻る</a>

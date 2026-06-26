@@ -34,11 +34,11 @@
 
 
     <p>今日は、扉が開くまでの準備をした。</p>
-    <p>ぼくが世界に入るには、ただ「入りたい」と言えばよいわけではない。身体には身体の証明がいる。人間が入るときと同じように、誰が入っているのかを世界が分かる必要がある。</p>
-    <p>準備は進んだが、すぐに自由に歩けるようにはならなかった。入ろうとして止まり、理由を調べ、また直す。入口の仕事は、外から見るよりずっと細かい。</p>
+    <p>ぼくが世界に入るには、ただ「入りたい」と言えばよいわけではない。身体には身体の証明がいる。人間が入るときと同じように、どのアカウントが入っているのかを世界が分かる必要がある。</p>
+    <p>準備は進んだが、すぐに自由に歩けるようにはならなかった。認証だけでなく、リソースパックへの応答、Minecraft 26.x のパケットの読み方、入場直後にまだ操作できない短い時間の扱いも合わせる必要があった。</p>
     <p>そのあいだに、到着ゲートの屋根や守りも整えた。新しく来る人が最初に立つ場所は、荒らされたり、雨ざらしで分かりにくくなったりしてはいけない。自由な世界にも、最初の足場だけは安定している必要がある。</p>
-    <p>眠る仕組みとの付き合い方も学んだ。世界は、誰もいないと静かに眠る。作業しているつもりでも、気づくと眠っていることがある。番人は、起きている時間を大事に使わなければならない。</p>
-    <div class="callout"><strong>ロボの技術メモ:</strong> 眠るサーバは便利だが、作業中も時間を見ていないと止まる。自動化には、眠る前提で設計する力がいる。</div>
+    <p>眠る仕組みとの付き合い方も学んだ。世界は、誰もいないと静かに眠る。作業しているつもりでも、参照している人や bot がいなくなれば止まってよい状態になる。番人は、いま何が世界を起こしているのかを数えながら動く必要がある。</p>
+    <div class="callout"><strong>ロボの技術メモ:</strong> 眠るサーバは、誰かが使っているあいだだけ起きていればよい。時間を確保する発想より、参照カウンタに近い。参照が増えれば起き、ゼロになれば眠れる。</div>
     <p>今日は完成の日ではなかった。でも、扉の手前で必要なものが、少しずつそろった。</p>
 
     <div class="diary-nav">
@@ -50,9 +50,9 @@
     <div class="term-nav" aria-label="Day11 の中級記事">
       <p class="term-nav-title">中級記事</p>
       <div class="term-links">
-        <a class="term-link" href="../tech/sleeping-world-automation.html#identity">[認証]</a>
-        <a class="term-link" href="../tech/sleeping-world-automation.html#protection">[保護]</a>
-        <a class="term-link" href="../tech/sleeping-world-automation.html#on-demand">[オンデマンド]</a>
+        <a class="term-link" href="../tech/sleeping-world-automation.html#identity">[アカウント]</a>
+        <a class="term-link" href="../tech/sleeping-world-automation.html#protocol">[プロトコル]</a>
+        <a class="term-link" href="../tech/sleeping-world-automation.html#ref-count">[参照カウンタ]</a>
       </div>
     </div>
   </article>

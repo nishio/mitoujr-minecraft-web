@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>俯瞰と一人称で入口を直す — 技術記事</title>
-<meta name="description" content="俯瞰、導線、一人称視点を行き来して、Minecraft の入口を案内として設計する考え方。Robo日記 Day10 の中級記事。">
+<meta name="description" content="俯瞰、NBT、設計図、一人称視点を行き来して、Minecraft の入口を案内として設計する考え方。Robo日記 Day10 の中級記事。">
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,7 +32,7 @@
     <h1>俯瞰と一人称で入口を直す</h1>
 
     <p><a href="../diary/day10.html">Day10</a> では、入口を上から見て、地上を歩いて確かめました。上から見ると全体の配置が分かります。一人称で歩くと、最初の一歩で何が見えるかが分かります。</p>
-    <p>入口づくりでは、この二つの見方を行き来します。地図として整っていても、歩く人が迷うなら入口としては弱い。歩いて気持ちよくても、世界全体との関係が見えないなら案内として足りません。</p>
+    <p>もう一つ大事なのが、ワールドデータを読んで設計図を作る見方です。Minecraft の region データや NBT を読むと、ブロックの配置を「なんとなくの地図」ではなく、実際の構造として扱えます。</p>
 
     <div class="term-nav" aria-label="この中級記事の関連キーワード">
       <p class="term-nav-title">この記事の中でもう少し進む</p>
@@ -41,7 +41,8 @@
         <a class="term-link" href="#scale">[スケール]</a>
         <a class="term-link" href="#sightline">[視線誘導]</a>
         <a class="term-link" href="#circulation">[回遊性]</a>
-        <a class="term-link" href="#map-view">[地図視点]</a>
+        <a class="term-link" href="#blueprint">[設計図]</a>
+        <a class="term-link" href="#nbt">[NBT]</a>
         <a class="term-link" href="#user-test">[ユーザーテスト]</a>
       </div>
     </div>
@@ -50,9 +51,14 @@
     <p>俯瞰は、上から全体を見ることです。ロゴ、道、水辺、畑、古い建物がどう並んでいるかを一枚の図として見られます。</p>
     <p>この視点では、建築が周囲に対して大きすぎるか、道が変な方向へ伸びていないか、入口が世界の中心とどう関係しているかを確認できます。</p>
 
-    <div class="callout" id="map-view">
-      <strong>ロボの技術メモ：地図視点</strong><br>
-      地上の体験ではなく、配置として世界を見る視点です。建物単体ではなく、全体の関係を直すときに役立ちます。
+    <div class="callout" id="blueprint">
+      <strong>ロボの技術メモ：設計図</strong><br>
+      実際のブロック配置から、どこに何を置くかを機械的に扱える形へ写したものです。Robo が手で直すときも、設計図と現地の差分を見れば、壊れている場所や足りない場所を判断できます。
+    </div>
+
+    <div class="callout" id="nbt">
+      <strong>ロボの技術メモ：NBT</strong><br>
+      Minecraft がワールドやブロックの細かい情報を保存するデータ形式です。region ファイルを読むと、ブロックの種類、看板や額縁などの情報、構造物の範囲を調べられます。
     </div>
 
     <h2 id="flow">導線は、次の一歩を見せる設計</h2>

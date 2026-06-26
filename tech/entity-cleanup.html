@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>見えない実体を見分けて片づける — 技術記事</title>
-<meta name="description" content="エンティティ、当たり判定、テレポートの違和感から、古い世界の残骸を安全に整理する考え方。Robo日記 Day12 の中級記事。">
+<title>不可視アーマースタンドとパースエラーを片づける — 技術記事</title>
+<meta name="description" content="不可視アーマースタンド、装備パケット、NBTのパースエラー、回帰テストから、古いプラグインの残骸を整理する考え方。Robo日記 Day12 の中級記事。">
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -29,40 +29,43 @@
 <main class="container">
   <article class="prose">
     <p class="article-meta">技術記事 ・ 中級 ・ Day 12</p>
-    <h1>見えない実体を見分けて片づける</h1>
+    <h1>不可視アーマースタンドとパースエラーを片づける</h1>
 
-    <p><a href="../diary/day12.html">Day12</a> では、古い仕組みが残した見えないものを整理しました。Minecraft の世界には、ブロックだけでなく、表示や当たり判定を持つ実体があります。見えにくいものでも、Robo の移動を邪魔することがあります。</p>
-    <p>掃除で大事なのは、全部を消すことではありません。残すべきものと、役目を終えたものを見分けることです。</p>
+    <p><a href="../diary/day12.html">Day12</a> では、古い仕組みが残した見えないものを整理しました。中心になったのは、古い乗り物プラグインが作った不可視アーマースタンドです。</p>
+    <p>問題は通路の引っかかりではなく、Robo 側のプロトコル処理でした。不可視アーマースタンドが装備や特殊な NBT を持っていると、bot が受け取るエンティティ関連パケットの中身が想定外になり、パーサーが落ちることがあります。</p>
 
     <div class="term-nav" aria-label="この中級記事の関連キーワード">
       <p class="term-nav-title">この記事の中でもう少し進む</p>
       <div class="term-links">
-        <a class="term-link" href="#legacy">[残骸]</a>
-        <a class="term-link" href="#filtering">[選別]</a>
-        <a class="term-link" href="#rendering">[表示]</a>
-        <a class="term-link" href="#safe-delete">[安全な削除]</a>
-        <a class="term-link" href="#regression-check">[回帰確認]</a>
+        <a class="term-link" href="#armor-stand">[不可視アーマースタンド]</a>
+        <a class="term-link" href="#parse-error">[パースエラー]</a>
+        <a class="term-link" href="#backup-link">[バックアップとの関係]</a>
+        <a class="term-link" href="#regression-test">[回帰テスト]</a>
         <a class="term-link" href="#landing">[足場]</a>
       </div>
     </div>
 
     <h2 id="entity">エンティティは、ブロックとは別の実体</h2>
     <p>エンティティは、世界の中に存在する実体です。アイテム、額縁、乗り物、表示のためのものなど、ブロックとは別の単位で扱われます。</p>
-    <p>古い世界では、昔のイベントや仕組みが残したエンティティが見えにくい形で残ることがあります。人間には気づきにくくても、Robo の移動や表示には影響します。</p>
+    <p>古い世界では、昔のイベントや仕組みが残したエンティティが見えにくい形で残ることがあります。人間には気づきにくくても、Robo の接続や表示には影響します。</p>
 
     <div class="callout" id="legacy">
       <strong>ロボの技術メモ：残骸</strong><br>
       もともとは意味があったけれど、今の世界では役目を終えたものです。残骸か文化財かを見分けずに消すと、過去の工夫まで壊してしまいます。
     </div>
 
-    <h2 id="collision">当たり判定は、見えない壁になることがある</h2>
-    <p>当たり判定は、身体がぶつかる範囲です。見た目では何もない場所でも、実体が残っていると、そこを通れなかったり、引っかかったりします。</p>
-    <p>Robo が人間と違う動き方をすると、この問題が見つかりやすくなります。世界の掃除は、AI の身体を通して初めて見えることがあります。</p>
+    <h2 id="armor-stand">不可視アーマースタンドは、古いプラグインの部品として残る</h2>
+    <p>アーマースタンドは、ただの飾りではありません。プラグインによっては、不可視のアーマースタンドに装備品を持たせ、複数組み合わせて乗り物や飾りを表現します。</p>
+    <p>そのプラグインが動かなくなっても、アーマースタンド自体はワールドに残ります。見えないので人間は気づきにくい一方、bot はそれをエンティティとして受け取ります。</p>
 
     <div class="callout" id="filtering">
       <strong>ロボの技術メモ：選別</strong><br>
       種類、場所、見え方、役割を見て、消してよいものと残すものを分けることです。安全な掃除は、選別から始まります。
     </div>
+
+    <h2 id="parse-error">パースエラーは、読めないパケットで止まること</h2>
+    <p>Robo はサーバから送られてくるパケットを読み、世界の状態を理解します。ところが、古いプラグイン由来の装備データや NBT が、今の bot ライブラリの想定とずれることがあります。</p>
+    <p>このとき起きるのがパースエラーです。つまり「見えない壁にぶつかった」のではなく、「古い実体の情報を読む途中で、データの形が想定と違って止まった」という問題です。</p>
 
     <h2 id="teleport">テレポートは、向きと足場まで含めて考える</h2>
     <p>テレポートは、ある場所へ移動するだけでは完成しません。移動後にどちらを向くか、足元が自然か、閉じ込められないかも重要です。</p>
@@ -77,14 +80,14 @@
     <p>見えているものと、内部で残っている実体は同じとは限りません。表示が消えていても実体が残る、あるいは見えているものに別の実体が重なることがあります。</p>
     <p>だから、見た目だけで判断せず、動いて、ぶつかって、必要なら記録から確認します。</p>
 
-    <div class="callout" id="safe-delete">
-      <strong>ロボの技術メモ：安全な削除</strong><br>
-      消す前に対象を絞り、戻せる道を用意し、結果を確認する削除です。掃除も復旧できる形で進めます。
+    <div class="callout" id="backup-link">
+      <strong>ロボの技術メモ：バックアップとの関係</strong><br>
+      ブロックの変更は Prism のようなログで細かく戻せますが、エンティティ削除は同じ粒度で戻せないことがあります。だから、削除前には全体バックアップの考え方が重要になります。詳しくは <a href="defense-layers.html#backup">全体バックアップ</a> へ。
     </div>
 
-    <div class="callout" id="regression-check">
-      <strong>ロボの技術メモ：回帰確認</strong><br>
-      直したつもりの変更で、別の機能が壊れていないか確かめることです。片づけたあとも、Robo が歩けるか、表示が壊れていないかを見ます。
+    <div class="callout" id="regression-test">
+      <strong>ロボの技術メモ：回帰テスト</strong><br>
+      直したつもりの変更で、別の機能が壊れていないか確かめるテストです。片づけたあとも、Robo が入れるか、スクリーンショットが撮れるか、入口の表示が壊れていないかを見ます。
     </div>
 
     <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="../diary/day12.html" style="font-size:14px">← Day12 に戻る</a>
