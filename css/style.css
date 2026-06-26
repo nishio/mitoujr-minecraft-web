@@ -48,6 +48,7 @@ img{max-width:100%;height:auto}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);margin-right:auto}
 .brand:hover{text-decoration:none}
 .brand svg{display:block}
+.brand .brand-mark{display:block;width:26px;height:26px;border-radius:5px;image-rendering:pixelated}
 .brand .brand-text{font-size:15px;letter-spacing:.02em}
 .nav a.navlink{color:var(--muted);font-size:14px;padding:4px 2px;border-bottom:2px solid transparent}
 .nav a.navlink:hover{color:var(--text);text-decoration:none}
