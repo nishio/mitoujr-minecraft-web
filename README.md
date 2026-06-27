@@ -59,6 +59,16 @@ scripts/check-public-site.sh
 
 HTML構造、内部リンク、配信HTML/CSSの汎用scrub、ローカルHTTP 200を確認します。実ホスト名などの非公開値を検査したい場合は、リポジトリ外の `PRIVATE_FORBIDDEN_REGEX_FILE` に追加ルールを書きます。
 
+## 公開反映
+
+```sh
+scripts/publish-public-site.sh --dry-run
+# 明示GO後だけ:
+scripts/publish-public-site.sh --live
+```
+
+`--live` は公開前チェックを通してから `origin/main` へ push し、変更されたHTMLの GitHub Pages 配信が HTTP 200 になるまで待ちます。
+
 ## 公開してよい範囲（重要）
 
 このリポジトリは **public**。世界中のだれもが見られます。そのため、以下は**載せません**:
