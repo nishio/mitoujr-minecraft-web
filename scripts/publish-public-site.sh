@@ -24,7 +24,7 @@ Default: --dry-run
 What --live does:
   1. runs scripts/check-public-site.sh
   2. pushes the current branch to origin/main
-  3. waits for GitHub Pages URLs to return HTTP 200
+  3. waits for GitHub Pages URLs to return HTTP 200 and match local HTML
 
 Run --live only after explicit publish GO.
 USAGE
@@ -99,6 +99,7 @@ fi
 
 echo "==> pages to verify"
 printf '  %s\n' "${changed_html[@]}"
+echo "verification: HTTP 200 and exact HTML content match"
 
 if [ "$LIVE" -ne 1 ]; then
   cat <<EOF
@@ -113,16 +114,27 @@ fi
 echo "==> push"
 git push "$REMOTE" "HEAD:$BRANCH"
 
-echo "==> wait for GitHub Pages HTTP 200"
+echo "==> wait for GitHub Pages HTML match"
 deadline=$(( $(date +%s) + TIMEOUT_SECONDS ))
+tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/mitoujr-pages-check.XXXXXX")"
+cleanup_pages_check() {
+  rm -rf "$tmp_dir"
+}
+trap cleanup_pages_check EXIT
 while :; do
   all_ok=1
   for path in "${changed_html[@]}"; do
     url="$BASE_URL/${path#./}"
-    status="$(curl -sS -o /dev/null -w '%{http_code}' "$url" || true)"
+    live_file="$tmp_dir/$(printf '%s' "$path" | tr '/.' '__')"
+    status="$(curl -fsS -o "$live_file" -w '%{http_code}' "$url" || true)"
     if [ "$status" != "200" ]; then
       all_ok=0
       printf '  waiting: %s -> %s\n' "$url" "$status"
+      continue
+    fi
+    if ! cmp -s "$path" "$live_file"; then
+      all_ok=0
+      printf '  waiting: %s -> 200 but content not updated\n' "$url"
     fi
   done
   if [ "$all_ok" -eq 1 ]; then
@@ -138,4 +150,5 @@ done
 cat <<EOF
 published: $head_commit
 live: $BASE_URL/
+verified: changed HTML matches GitHub Pages content
 EOF
