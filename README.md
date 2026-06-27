@@ -32,6 +32,7 @@ tech.html             技術記事 一覧
   tech/robo-home.html Robo の家は待機場所でありインターフェース
   tech/mineflayer.html       Robo の体
   tech/voyager.html          Robo の頭
+  tech/steward.html          Robo が番人として世界を見回る
   tech/embodied-ai.html      AI が同じ世界で過ごす実験
   tech/history.html          一度、死にかけた世界の話
 diary.html            Robo日記 一覧
@@ -67,7 +68,7 @@ scripts/publish-public-site.sh --dry-run
 scripts/publish-public-site.sh --live
 ```
 
-`--live` は公開前チェックを通してから `origin/main` へ push し、変更されたHTMLの GitHub Pages 配信が HTTP 200 になるまで待ちます。
+`--live` は公開前チェックを通してから `origin/main` へ push し、変更されたHTMLの GitHub Pages 配信が HTTP 200 かつローカルHTMLと一致するまで待ちます。
 
 ## 公開してよい範囲（重要）
 
