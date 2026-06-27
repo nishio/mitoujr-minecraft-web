@@ -51,6 +51,14 @@ python3 -m http.server 8123 --bind 127.0.0.1
 # → http://127.0.0.1:8123/ を開く
 ```
 
+## 公開前チェック
+
+```sh
+scripts/check-public-site.sh
+```
+
+HTML構造、内部リンク、配信HTML/CSSの汎用scrub、ローカルHTTP 200を確認します。実ホスト名などの非公開値を検査したい場合は、リポジトリ外の `PRIVATE_FORBIDDEN_REGEX_FILE` に追加ルールを書きます。
+
 ## 公開してよい範囲（重要）
 
 このリポジトリは **public**。世界中のだれもが見られます。そのため、以下は**載せません**:
