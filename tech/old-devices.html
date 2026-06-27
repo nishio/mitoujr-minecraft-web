@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>古い装置を、壊す前に読む — 技術記事</title>
+<meta name="description" content="長く続いたMinecraft世界に残る古い装置を、保存・軽く直す・置き換える・触らないに分けて扱う考え方。">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ せわ</p>
+    <h1>古い装置を、壊す前に読む</h1>
+
+    <p>長く続いた Minecraft の世界には、今は動いていない装置が残ります。昔の自動倉庫、農場、メッセージ装置、移動の仕組み。見た目は古びていても、ただの不要物とは限りません。</p>
+    <p>そこには、誰かが試した考え方があります。便利にしようとした跡があります。今の版ではそのまま動かなくても、世界の記憶としてはまだ意味を持っています。</p>
+
+    <div class="term-nav" aria-label="この記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#read">[読む]</a>
+        <a class="term-link" href="#classify">[分類する]</a>
+        <a class="term-link" href="#replace">[置き換える]</a>
+        <a class="term-link" href="#robo">[Roboの役割]</a>
+      </div>
+    </div>
+
+    <h2 id="read">まず、押さない。壊さない。直さない。</h2>
+    <p>古い装置を見ると、つい直したくなります。ボタンを押して、チェストを開けて、足りないものを補って、動くか試したくなる。でも共有ワールドでは、その前に考えることがあります。</p>
+    <p>その装置は、まだ誰かが使うものなのか。もう使わないけれど、歴史として残すものなのか。少し直せばまた役に立つものなのか。別の仕組みに置き換えたほうがよいものなのか。</p>
+    <p>分からないまま触ると、修理のつもりが、記録を消す作業になることがあります。だから最初の一周は、見るだけにします。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：read-only</strong><br>
+      まず観察だけを行い、世界の状態を変えない調べ方です。古い装置や人の建築を扱うときは、最初から手を動かさないことが安全につながります。
+    </div>
+
+    <h2 id="classify">4つに分けると、判断しやすい</h2>
+    <p>Robo は古い装置を見るとき、いきなり「直すか消すか」では考えません。次の4つに分けて考えます。</p>
+    <ul>
+      <li><strong>保存する</strong>：動かさず、説明を足して、当時の実験や思い出として残す。</li>
+      <li><strong>軽く直す</strong>：足りない材料を補う、案内を足すなど、小さく戻せる範囲だけ直す。</li>
+      <li><strong>置き換える</strong>：昔の仕組みは残しつつ、今の版で保守しやすい新しい仕組みへ移す。</li>
+      <li><strong>触らない</strong>：副作用が大きい、意味がまだ分からない、誰かの判断が必要なので、その場では動かさない。</li>
+    </ul>
+    <p>この分類を先に決めておくと、Robo が勝手に直しすぎることを防げます。人間も「これは記念に残したい」「これは少し直してよい」と言いやすくなります。</p>
+
+    <h2 id="replace">置き換えは、過去を消すことではない</h2>
+    <p>Minecraft の版が変わると、昔のプラグインや装置がそのまま動かないことがあります。そういうとき、新しい仕組みに置き換えるのは自然な選択です。</p>
+    <p>ただし、置き換えることは「昔のものをなかったことにする」ことではありません。昔の装置が何をしようとしていたのかを読み、その意図を今の仕組みに移すことです。</p>
+    <p>たとえば、昔の移動装置は「迷わず帰る道を作りたい」という意図だったかもしれません。昔の仕分け装置は「共同倉庫を使いやすくしたい」という意図だったかもしれません。意図を読めれば、新しい形にしても、世界の文脈は残せます。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：移行と保守</strong><br>
+      古い仕組みをそのまま復活させるより、今の版で安全に保守できる形へ移すほうがよい場合があります。そのときも、何を置き換えたのかを記録しておくことが大切です。
+    </div>
+
+    <h2 id="robo">Robo は、修理屋である前に聞き役になる</h2>
+    <p>Robo は世界の中を歩けます。明かりを置いたり、看板を足したり、簡単な修理をしたりできます。でも、古い装置に対しては、まず聞き役になります。</p>
+    <p>この装置は残したいのか。動かしたいのか。展示にしたいのか。新しい仕組みに移したいのか。人間が短い言葉で答えられるように、Robo は場所と候補を整理しておきます。</p>
+    <p>これは <a href="world-care.html">世界をよくするのは、ブロックを置くことだけではない</a> という話の続きです。直す前に読む。触る前に分類する。そうすると、古い装置は邪魔な残骸ではなく、次の改善の材料になります。</p>
+    <p>世界を長く続けるとは、何でも新しくすることではありません。古いものの意味を読み、残すものと変えるものを丁寧に分けることです。</p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
