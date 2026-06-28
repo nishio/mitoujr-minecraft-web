@@ -181,13 +181,14 @@ with socket.socket() as s:
 PY
 )"
   fi
-  log_file="$(mktemp "${TMPDIR:-/tmp}/mitoujr-public-site.XXXXXX.log")"
+  log_dir="$(mktemp -d "${TMPDIR:-/tmp}/mitoujr-public-site.XXXXXX")"
+  log_file="$log_dir/server.log"
   python3 -m http.server "$PORT" --bind 127.0.0.1 >"$log_file" 2>&1 &
   server_pid="$!"
   cleanup_server() {
     kill "$server_pid" 2>/dev/null || true
     wait "$server_pid" 2>/dev/null || true
-    rm -f "$log_file"
+    rm -rf "$log_dir"
   }
   trap cleanup_server EXIT
   sleep 1
