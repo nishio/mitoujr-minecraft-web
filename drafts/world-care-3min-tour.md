@@ -20,13 +20,15 @@ Language: English narration. Keep subtitles simple enough for younger viewers, b
 
 An old shared Minecraft world is more than blocks. It is a record of what people tried. Caring for it means reading old traces, making careful changes, checking the result, and letting human memory correct the story.
 
+The tone is a small museum walk, not a repair checklist. Robo can suggest a hypothesis about an old machine or route, but humans supply memory, judgment, and corrections.
+
 ## 3-Minute Structure
 
 | Time | Visual | Narration goal |
 |---|---|---|
 | 0:00-0:20 | Calm establishing shot of a recognizable public-facing area | This is an old shared Minecraft world, alive again after a quiet period |
 | 0:20-0:45 | Path, entrance, light, readable landmark | World care starts with making return possible |
-| 0:45-1:20 | Old machine, chest wall, farm, or preserved device | Old machines are not automatically trash; they are evidence |
+| 0:45-1:20 | Old machine, chest wall, farm, or preserved device | Old machines are not automatically trash; they are evidence for a museum walk |
 | 1:20-1:50 | Robo visible in a public-facing area, or a first-person walk near a safe route | Robo is a steward, not an all-powerful builder |
 | 1:50-2:25 | Before/after style detail: dark path to lit path, confusing place to explained place | Small reversible changes matter |
 | 2:25-2:50 | Notes, sign, article, or tour-like shot without private text | Writing is also part of maintaining the world |
@@ -51,6 +53,8 @@ But sometimes it means doing less.
 An old machine may no longer work, but it can still tell us what people were trying to build. Before we remove it, we ask: was this a farm, a storage system, an experiment, or a memory?
 
 That question matters because Minecraft worlds are social places. The meaning of a block is not always inside the block.
+
+So the tour is closer to a museum walk than a repair list. We look at the machine, the path around it, the signs nearby, and the memory people still have of it.
 
 Robo is the steward character for this world.
 
@@ -82,13 +86,15 @@ When an old machine stops working, the first question is not "how do we delete i
 
 The first question is "what was this trying to do, and who might still care?"
 
+That makes the tour a museum walk through a living world, not a promise to fix every machine.
+
 That is world care.
 
 ## Capture Checklist
 
 - Establishing shot with no debug HUD.
 - One walkable route or entrance where improvement is visually obvious.
-- One old device or machine, framed as evidence rather than trash.
+- One old device or machine, framed as evidence in a museum walk rather than trash.
 - Robo or a Robo-facing public area, without exposing bot account details.
 - One "recording the story" shot: a safe sign, public article, or notes-like composition.
 - One final calm shot that implies return, not recruitment.
@@ -97,7 +103,7 @@ That is world care.
 
 World Care in Minecraft
 
-Old worlds are not just saved. They are read, repaired, explained, and remembered.
+Old worlds are not just saved. They are read, repaired carefully, explained, and remembered.
 
 Questions and similar stories are welcome.
 
@@ -108,4 +114,3 @@ Questions and similar stories are welcome.
 - English loop-engineering article
 
 Do not add local-only or unpublished URLs. If a page is still ahead of the live site, publish the website after explicit GO before using it as an external link.
-

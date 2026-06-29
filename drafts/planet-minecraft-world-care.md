@@ -11,8 +11,8 @@ Short title option:
 World Care in an Old Minecraft World
 
 Suggested tags:
-`minecraft`, `community`, `worldbuilding`, `server`, `ai`, `maintenance`,
-`story`, `builds`
+`minecraft`, `community`, `worldbuilding`, `education`, `ai`, `maintenance`,
+`preservation`, `story`
 
 Suggested cover image:
 A calm, readable screenshot of an old landmark, a path, or Robo's public-facing
@@ -73,6 +73,11 @@ But care can also happen outside the world:
 That last part matters. A Minecraft world is not only a collection of blocks.
 It is also a record of what people tried.
 
+One useful way to frame an old device tour is as a museum walk. Robo can make a
+careful guess about what an old machine was for, but the final meaning comes
+from evidence and human memory: the blocks, the path around them, old signs, and
+what returning players still remember.
+
 ## Robo, the steward
 
 The project also has an AI steward character called Robo. Robo is not meant to
@@ -126,6 +131,7 @@ show the craft of maintaining a world after it has accumulated history.
 There is a lot of creativity in making a place readable again:
 
 - treating old machines like archaeology,
+- reading old machines as a museum walk instead of a repair queue,
 - keeping enough mess that the world still feels lived in,
 - adding just enough guidance that new visitors are not lost,
 - letting an AI helper participate without giving it unchecked authority.
@@ -149,9 +155,9 @@ That is world care.
 
 This is a post about "world care": maintaining an old shared Minecraft world as
 a place with history, not just as a server to upgrade. It covers preserving old
-builds, making arrivals readable, using an AI steward character named Robo in
-small reviewable loops, and treating writing and documentation as part of the
-world itself.
+builds, reading old devices as a museum walk, using an AI steward character
+named Robo in small reviewable loops, and treating writing and documentation as
+part of the world itself.
 
 ## Posting Checklist
 
