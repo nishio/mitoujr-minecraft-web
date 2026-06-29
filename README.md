@@ -23,6 +23,7 @@ tech.html             技術記事 一覧
   tech/world-identification.html 名前と場所を、公開しすぎずに正す
   tech/embodied-observation.html 身体を持つと、世界の読み方が変わる
   tech/headless-vision.html 画面のない身体に目を持たせる
+  tech/rainbow-fall.html    落ちるための塔に、帰れる道を作る
   tech/entrance-flow.html 俯瞰と一人称で入口を直す
   tech/sleeping-world-automation.html 眠る世界に合わせて自動化する
   tech/entity-cleanup.html 見えない実体を見分けて片づける
