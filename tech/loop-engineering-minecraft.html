@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loop Engineering と Minecraft：共有ワールドを育てる技術 — 技術記事</title>
-<meta name="description" content="Minecraft の共有ワールドを、AI、人間、記録、公開記事が回り続ける Loop Engineering の実験場として読む大人向け解説。">
+<title>Loop Engineering と Minecraft：AI と人間が共有ワールドを育てる技術 — 技術記事</title>
+<meta name="description" content="Minecraft の共有ワールドを、AI、人間、記録、公開記事が回り続ける Loop Engineering の実験場として読む大人向け解説。AIプロジェクトをモデル単体ではなく、継続するループとして捉える。">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
@@ -26,14 +26,16 @@
 <main class="container">
   <article class="prose">
     <p class="article-meta">技術記事 ・ 大人向け</p>
-    <h1>Loop Engineering と Minecraft：共有ワールドを育てる技術</h1>
+    <h1>Loop Engineering と Minecraft：AI と人間が共有ワールドを育てる技術</h1>
 
     <p>Minecraft のサーバ運用というと、設定、プラグイン、バックアップ、負荷対策の話に見えます。AI を入れるというと、ボットが何を作れるか、どれくらい自律的に動けるかの話に見えます。</p>
     <p>でもこのプロジェクトを大人向けに一段抽象化して読むなら、中心にあるのは <strong>Loop Engineering</strong> です。観察し、小さく試し、結果を確かめ、記録し、人間の反応を受け取り、次の行動へ戻す。そのループを、Minecraft という共有ワールドの上に設計する実験です。</p>
+    <p>これは「AI で何が自動化できるか」だけの話ではありません。AI が人間の生活圏やコミュニティに入るとき、技術者はモデルの出力だけでなく、環境への作用、人間の解釈、失敗からの回復、次の判断への戻し方まで設計する必要があります。</p>
 
     <div class="term-nav" aria-label="この記事の関連キーワード">
       <p class="term-nav-title">この記事の中でもう少し進む</p>
       <div class="term-links">
+        <a class="term-link" href="#adult">[大人向けに読む]</a>
         <a class="term-link" href="#why-minecraft">[なぜ Minecraft か]</a>
         <a class="term-link" href="#loop">[ループを設計する]</a>
         <a class="term-link" href="#digital-twin">[デジタルツイン]</a>
@@ -41,6 +43,11 @@
         <a class="term-link" href="#writing">[書くこと]</a>
       </div>
     </div>
+
+    <h2 id="adult">大人向けに読む理由</h2>
+    <p>大人向けにこのプロジェクトを見るなら、Minecraft はゲームというより、AI を社会に入れるための小さな実験系です。人間がすでに作った場所があり、そこに愛着や記憶があり、変更はすぐ環境に残ります。AI の判断が当たったかどうかは、ベンチマークの点数だけでなく、人間がその場所をどう歩き、どう感じ、どう直してほしいと言うかで決まります。</p>
+    <p>この構図は、職場のAI、学校のAI、地域のデジタルツイン、コミュニティ運営にも似ています。AI を導入するとは、単に賢い機能を足すことではなく、人間がいる場所に新しい行為者を入れることです。そこで必要になるのは、強い自動化だけではありません。安全に観察し、小さく作用し、結果を共有し、次の判断へ戻すループです。</p>
+    <p>Loop Engineering は、そのループを作るための言葉です。モデル、ツール、ログ、レビュー、公開説明、人間の反応を、ばらばらの作業ではなくひとつの循環として設計します。</p>
 
     <h2 id="why-minecraft">なぜ Minecraft が Loop Engineering に向いているのか</h2>
     <p>Minecraft は、かなり特殊な実験環境です。世界はブロックとして明示的に保存され、人間の行動は建築、道、看板、暗い場所、放置された装置として残ります。しかもそれらは単なるデータではなく、誰かが遊んだ痕跡でもあります。</p>
@@ -78,6 +85,7 @@
     <h2 id="ai">AI を道具ではなく、ループの参加者として扱う</h2>
     <p>Robo は、命令を受けて結果だけを返す道具としても作れます。しかしこのプロジェクトでは、Robo をもう少し違う位置に置いています。世界を観察し、分からないことを残し、人間の反応を待ち、次の小さな改善へつなげる存在です。</p>
     <p>これは <a href="ai-friend.html">AI を道具ではなく友人として見る</a>発想にもつながります。ただし、ここで言う友人性は、感情的な擬人化だけではありません。共有空間の中で、同じ対象を見て、行動の結果を共有し、過去の記録から次のふるまいを変えるという関係です。</p>
+    <p>日本の物語には、この見方の手がかりがあります。ドラえもんは道具を出す機械である前に、同じ家で失敗や成長を見ている隣人です。ラピュタのロボットは、命令を実行するだけでなく、残された場所を静かに世話する存在として記憶されています。Robo はそのどちらでもありませんが、「AI を使役する道具」だけでなく「同じ場所を気にかける相手」として考える入口になります。</p>
     <p>人間もまた、外から評価するだけの存在ではありません。人間が迷う、気づく、短くチャットする、違和感を伝える。その行動自体が <a href="human-in-the-loop.html">Human in the Loop</a> の入力になります。</p>
 
     <h2>強い AI ではなく、強いループを作る</h2>
@@ -94,6 +102,7 @@
     <p>未踏ジュニア Minecraft の作品性は、動いているサーバや Robo だけにあるわけではありません。サーバ、人間、AI、記録、公開記事、検証用のコピー、失敗を戻す仕組みが、相互に影響しながら回ることにあります。</p>
     <p>Minecraft は、そのループを小さく見える形にしてくれます。暗かった場所が明るくなる。迷った場所に案内ができる。古い装置を壊す前に読む。人間が来て、反応し、次の改善が決まる。</p>
     <p>Loop Engineering と Minecraft を結びつけると、ゲームサーバ運用は単なる保守ではなくなります。人間と AI が同じ場所で暮らしながら、世界を少しずつ理解し直すための技術になります。</p>
+    <p>大人にとってこの小さな世界が面白いのは、AI の未来を抽象論としてではなく、足元のブロック、道、記録、人間の一言に分解して見られるからです。強いAIを一度だけ呼ぶのではなく、弱くても戻せるループを何度も回す。そこに、このプロジェクトの実験としての価値があります。</p>
 
     <div class="term-nav" aria-label="関連する記事">
       <p class="term-nav-title">関連する記事</p>
