@@ -15,6 +15,7 @@ tech.html             技術記事 一覧
   tech/on-demand.html             必要なときだけ目を覚ますサーバ
   tech/griefing-defense.html      壊されても、元に戻せる
   tech/digital-twin.html          本番を壊さずに試すデジタルツイン
+  tech/sulfur-cube-playground.html 新しい物理で、小さな遊び場を作る
   tech/iac.html                   世界を“設計図”で持つ
   tech/world-care.html            世界をよくするのは、ブロックを置くことだけではない
   tech/world-care-en.html         World Care: Maintaining a Minecraft World as a Shared Place

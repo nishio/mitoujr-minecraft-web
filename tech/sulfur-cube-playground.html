@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新しい物理で、小さな遊び場を作る — 技術記事</title>
+<meta name="description" content="Minecraft 26.2 の Sulfur Cube を、本番ワールドへすぐ入れず、別の小さな実験場で試す考え方。">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 実験</p>
+    <h1>新しい物理で、小さな遊び場を作る</h1>
+
+    <p>Minecraft の新しいバージョンには、ときどき「これは遊びにできそうだ」と思う要素が入ります。26.2 の Sulfur Cube も、そのひとつです。</p>
+    <p>Sulfur Cube は、ブロックを吸収すると性質が変わる mob です。軽くなったり、よく跳ねたり、滑りやすくなったりする。つまり、ただ倒す相手ではなく、押して、比べて、実験できる物体として見られます。</p>
+    <p>でも、面白そうだからといって、すぐ本物の共有ワールドへ入れるわけではありません。まずは別の小さな世界で試します。</p>
+
+    <div class="term-nav" aria-label="この記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#why">[すぐ本番に入れない]</a>
+        <a class="term-link" href="#lanes">[比較レーン]</a>
+        <a class="term-link" href="#human">[人間が見る]</a>
+        <a class="term-link" href="#robo">[Robo の学び]</a>
+      </div>
+    </div>
+
+    <h2 id="why">新要素は、まず小さく試す</h2>
+    <p>共有ワールドには、古い建築、装置、道、思い出があります。新しい mob やブロックを入れるには、サーバのバージョン、プラグインの互換性、戻す手段、人間がどう遊ぶかを確かめる必要があります。</p>
+    <p>だから、このプロジェクトでは「新しいからすぐ入れる」ではなく、「別の小さな実験場で、何が面白いのかを先に確かめる」ことを大事にします。</p>
+    <p>これは <a href="digital-twin.html">デジタルツイン</a> や <a href="loop-engineering.html">ループエンジニアリング</a> と同じ考え方です。小さく試し、観察し、失敗を小さくし、分かったことを次へ戻します。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：本番とサンドボックス</strong><br>
+      本番は、みんなが実際に遊ぶ共有ワールドです。サンドボックスは、試すための別の小さな環境です。新しい仕組みは、まずサンドボックスで安全性と面白さを見ます。
+    </div>
+
+    <h2 id="lanes">物理を比べるレーン</h2>
+    <p>Sulfur Cube の最初の実験は、複雑なミニゲームではありません。まっすぐなレーンを何本か作り、それぞれで違うブロックを吸収させて、動き方を比べます。</p>
+    <ul>
+      <li>羊毛なら、軽く感じるのか。</li>
+      <li>木なら、跳ね返りが強くなるのか。</li>
+      <li>氷なら、遠くまで滑るのか。</li>
+      <li>ハニカムなら、動きが重くなるのか。</li>
+      <li>ソウルサンドなら、遅く感じるのか。</li>
+    </ul>
+    <p>大事なのは、いきなり派手にしないことです。爆発するもの、燃えるもの、閉じ込める仕掛けは、最初の実験には入れません。まずは平らで、逃げ道があり、分からなくなったらすぐリセットできる形にします。</p>
+
+    <h2 id="human">最後は、人間の体感で決まる</h2>
+    <p>Robo は、ブロックがそこにあるか、mob が召喚できるか、コマンドで動いたかを調べられます。けれど、それだけでは「遊びとして分かりやすいか」は分かりません。</p>
+    <p>人間が実際に押して、「これは滑る」「これは違いが分からない」「説明なしでも遊べる」と感じるか。その体感が、次の設計入力になります。</p>
+    <p>もし違いが分からなければ、それも失敗ではありません。レーンが悪いのか、吸収の手順が分かりにくいのか、そもそも最初の遊びとして向いていないのかを、次のループで直せます。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：人間の体感もセンサー</strong><br>
+      ログでは成功していても、遊ぶ人が違いを感じられなければ、遊び場としてはまだ弱い。Robo は機械的な検査をし、人間は体感を返し、その両方で設計を進めます。
+    </div>
+
+    <h2 id="robo">Robo が「予想して、確かめる」教材になる</h2>
+    <p>Sulfur Cube の遊び場は、ただ新要素を見せる場所ではありません。Robo が「氷なら滑りそう」「木なら跳ねそう」と予想し、人間が実験して確かめる場所にもできます。</p>
+    <p>予想が当たったら、その理由を説明する。外れたら、何を見落としたのかを記録する。そうすると、遊び場そのものが、Robo と人間が一緒に学ぶ小さな実験になります。</p>
+    <p>この世界では、そういう小さな実験を少しずつ増やしていきたい。古い世界を守るだけでなく、新しい遊びを安全に試し、分かったことをまた世界へ戻していくためです。</p>
+
+    <p style="font-size:14px;color:var(--muted)">もっと知りたい人へ：<a href="https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2">Minecraft Java Edition 26.2</a></p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="digital-twin.html" style="font-size:14px">← デジタルツイン</a> &nbsp;・&nbsp; <a href="human-in-the-loop.html" style="font-size:14px">人間も実験の一部 →</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
