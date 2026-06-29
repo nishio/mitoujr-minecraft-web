@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robo とチャットで一緒に歩く — 技術記事</title>
+<meta name="description" content="Minecraftの中でRoboと同じ場所を歩きながらチャットし、言葉を場所と結びつけて世界を理解していく考え方。">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 会話</p>
+    <h1>Robo とチャットで一緒に歩く</h1>
+
+    <p>Robo が世界を理解する方法は、ブロックの情報を読むことだけではありません。人間と同じ場所を歩き、そこで交わされた言葉を聞くことも、世界を読む大事な手がかりになります。</p>
+    <p>人間は Minecraft の中で、「この装置」「こっちの通路」「ここは残したい」のように話します。その言葉は、場所と一緒になって初めて意味を持ちます。Robo がそばにいると、その言葉を景色の中に置いて記録できます。</p>
+    <p>この記事では、Robo とチャットで一緒に歩くことを、AI が同じ世界で学ぶための小さな会話実験として見ます。</p>
+
+    <div class="term-nav" aria-label="この記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#walking">[一緒に歩く]</a>
+        <a class="term-link" href="#words">[言葉を場所へ置く]</a>
+        <a class="term-link" href="#docent">[案内役]</a>
+        <a class="term-link" href="#boundaries">[境界]</a>
+      </div>
+    </div>
+
+    <h2 id="walking">同じ場所にいると、会話の意味が変わる</h2>
+    <p>チャット欄だけで話すAIは、文章を読んで文章で返します。Minecraft の中にいる Robo は、それに加えて場所を共有できます。通路の暗さ、入口の分かりにくさ、古い装置の形、看板の向き。言葉の背景にある景色を、一緒に見ることができます。</p>
+    <p>これは「AIに身体を持たせる」ことの分かりやすい効果です。Robo は世界の外から説明を受けるだけでなく、その場に立って、人間が何を見ながら話しているかを考えられます。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：同じ場所で聞く</strong><br>
+      同じ文章でも、場所が違えば意味は変わります。「ここ」は座標だけでなく、周囲の建築、向き、直前の会話と一緒に決まります。
+    </div>
+
+    <h2 id="words">言葉を場所へ置く</h2>
+    <p>共有ワールドでは、あとから来た人が「なぜここにこの装置があるのか」を知りたいことがあります。作った人の記憶、直した人の判断、残すと決めた理由。そうした情報は、ブロックだけを見ても分かりません。</p>
+    <p>Robo が人間と歩きながらチャットを聞くと、言葉を場所へ結びつけられます。「この古い装置は保存したい」「ここは暗くて危ない」「この導線は邪魔にならないようにしたい」。そういう短い言葉が、次の見回りや記事の材料になります。</p>
+    <p>これは <a href="spatial-conversation.html">言葉を場所と向きに結びつける</a> 話の実践です。会話が、ただのログではなく、世界を読む地図の一部になります。</p>
+
+    <h2 id="docent">Robo は案内役にもなる</h2>
+    <p>Robo が同じ場所にいられるなら、案内役としても働けます。人間が「ここは何？」と聞いたら、Robo は近くの場所の記録や、以前の会話をもとに説明できます。分からなければ、分からないまま記録し、あとで調べる候補にできます。</p>
+    <p>大事なのは、Robo がすべてを知っているふりをしないことです。古い世界には、持ち主、思い出、壊れた理由、触らないほうがいい事情があります。Robo はそれを勝手に決めつけず、人間の補足を受け取りながら、少しずつ地図を詳しくしていきます。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：案内役</strong><br>
+      案内役は、正解を一方的に話す役ではありません。人間の発見や訂正を受け取り、次に来る人へ渡せる形に整える役です。
+    </div>
+
+    <h2 id="boundaries">会話できることと、勝手に動くことは分ける</h2>
+    <p>Robo と話せるからといって、Robo が何でも勝手に変えてよいわけではありません。チャットで聞くこと、記録すること、看板にすること、ブロックを置くことは、それぞれ影響の大きさが違います。</p>
+    <p>最初の段階では、Robo は読むことを中心にします。人間がすぐ返事できないこともあるので、返事がなければ安全なところで止まり、判断が必要なことは保留にします。</p>
+    <p>この境界は、<a href="steward.html">番人として世界を見回る</a> ときにも同じです。Robo が友人や案内役に近づくほど、何をしてよくて、何を人間に確認するべきかを丁寧に分ける必要があります。</p>
+
+    <h2>会話は、世界を育てる入力になる</h2>
+    <p>Robo と歩きながら話すことは、ただ楽しいだけではありません。どこが分かりにくいか。どの装置を残したいか。どんな導線なら邪魔にならないか。人間の言葉は、次の世界改善の入力になります。</p>
+    <p>だから Robo のチャット実験は、AI と人間が同じ場所で暮らすための小さな練習です。世界を読む。人間に聞く。分かったことを記録する。次に来る人が歩きやすくなる。そういうループを、会話から作っていきます。</p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="spatial-conversation.html" style="font-size:14px">← 言葉と場所</a> &nbsp;・&nbsp; <a href="ai-friend.html" style="font-size:14px">AI を友人として見る →</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
