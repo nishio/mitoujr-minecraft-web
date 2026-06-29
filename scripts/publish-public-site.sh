@@ -9,6 +9,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 LIVE=0
+RESPONSIVE_MODE="${RESPONSIVE_MODE:-changed}"
 REMOTE="${REMOTE:-origin}"
 BRANCH="${BRANCH:-main}"
 BASE_URL="${BASE_URL:-https://nishio.github.io/mitoujr-minecraft-web}"
@@ -17,16 +18,21 @@ TIMEOUT_SECONDS="${TIMEOUT_SECONDS:-180}"
 usage() {
   cat <<'USAGE'
 usage:
-  scripts/publish-public-site.sh [--dry-run|--live]
+  scripts/publish-public-site.sh [--dry-run|--live] [--changed-responsive|--full-responsive|--no-responsive]
 
 Default: --dry-run
 
 What --live does:
-  1. runs scripts/check-public-site.sh
+  1. runs scripts/check-public-site.sh with changed-page responsive checks
   2. pushes the current branch to origin/main
   3. waits for GitHub Pages URLs to return HTTP 200 and match local files
 
 Run --live only after explicit publish GO.
+
+Responsive modes:
+  --changed-responsive  check responsive layout only for changed HTML pages (default)
+  --full-responsive     check responsive layout for every HTML page
+  --no-responsive       skip responsive layout checks
 USAGE
 }
 
@@ -34,6 +40,9 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     --dry-run) LIVE=0 ;;
     --live) LIVE=1 ;;
+    --changed-responsive) RESPONSIVE_MODE=changed ;;
+    --full-responsive) RESPONSIVE_MODE=full ;;
+    --no-responsive) RESPONSIVE_MODE=none ;;
     -h|--help) usage; exit 0 ;;
     *) echo "unknown arg: $1" >&2; usage >&2; exit 2 ;;
   esac
@@ -83,7 +92,15 @@ if [ "$ahead_count" = "0" ]; then
 fi
 
 echo "==> prepublish check"
-scripts/check-public-site.sh
+case "$RESPONSIVE_MODE" in
+  changed) scripts/check-public-site.sh --responsive-changed --responsive-base "$REMOTE/$BRANCH" ;;
+  full) scripts/check-public-site.sh ;;
+  none) scripts/check-public-site.sh --no-responsive ;;
+  *)
+    echo "error: unknown responsive mode: $RESPONSIVE_MODE" >&2
+    exit 2
+    ;;
+esac
 
 changed_public_files=()
 if git rev-parse --verify "$REMOTE/$BRANCH" >/dev/null 2>&1; then

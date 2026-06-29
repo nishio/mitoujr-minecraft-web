@@ -100,6 +100,7 @@ scripts/publish-public-site.sh --live
 ```
 
 `--live` は公開前チェックを通してから `origin/main` へ push し、変更されたHTMLの GitHub Pages 配信が HTTP 200 かつローカルHTMLと一致するまで待ちます。
+responsive 検査は既定で変更HTMLだけを確認します。全ページを確認したい場合は `--full-responsive` を付けます。
 
 ## 公開してよい範囲（重要）
 
