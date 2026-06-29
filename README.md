@@ -71,7 +71,7 @@ python3 -m http.server 8123 --bind 127.0.0.1
 scripts/check-public-site.sh
 ```
 
-HTML構造、内部リンク、配信HTML/CSSの汎用scrub、ローカルHTTP 200を確認します。ローカルに Chrome/Chromium があれば、全HTMLを mobile/desktop 幅で読み、横はみ出しと画像欠損も確認します。実ホスト名などの非公開値を検査したい場合は、リポジトリ外の `PRIVATE_FORBIDDEN_REGEX_FILE` に追加ルールを書きます。
+HTML構造、内部リンク、配信HTML/CSSの汎用scrub、Markdown下書きを含む公開ソースの秘密形式scrub、ローカルHTTP 200を確認します。ローカルに Chrome/Chromium があれば、全HTMLを mobile/desktop 幅で読み、横はみ出しと画像欠損も確認します。実ホスト名などの非公開値を検査したい場合は、リポジトリ外の `PRIVATE_FORBIDDEN_REGEX_FILE` に追加ルールを書きます。
 
 HTMLページを追加・削除した場合は、公開前チェックの前に次を実行して `sitemap.xml` を更新します。
 

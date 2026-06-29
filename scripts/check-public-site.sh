@@ -26,6 +26,7 @@ Checks:
   - HTML parse and local href/src file targets
   - sitemap.xml and robots.txt are current
   - generic public scrub patterns in HTML/CSS
+  - source-level scrub for public repo text files, including Markdown drafts
   - local HTTP 200 for every HTML page, unless --no-serve is passed
   - responsive overflow and image checks with local Chrome, when available
     Use --responsive-changed to run that expensive responsive pass only against
@@ -157,6 +158,15 @@ SCRUB_FILES=()
 while IFS= read -r file; do
   SCRUB_FILES+=("$file")
 done < <(find . \( -name '*.html' -o -name '*.xml' -o -name 'robots.txt' -o -path './css/*.css' \) -type f | sort)
+SOURCE_SCRUB_FILES=()
+while IFS= read -r file; do
+  SOURCE_SCRUB_FILES+=("./$file")
+done < <(
+  {
+    git ls-files
+    git ls-files --others --exclude-standard
+  } | sort -u | grep -E '(^README[.]md$|[.]md$|[.]html$|[.]xml$|[.]css$|[.]js$|[.]mjs$|[.]py$|[.]sh$|[.]txt$|[.]json$|[.]ya?ml$|robots[.]txt$|sitemap[.]xml$|[.]gitignore$|[.]nojekyll$)'
+)
 HTML_FILES=()
 while IFS= read -r file; do
   HTML_FILES+=("$file")
@@ -164,7 +174,7 @@ done < <(find . -name '*.html' -type f | sort)
 GENERIC_PATTERNS=(
   'server[.]properties'
   '/Users/'
-  '(^|[^[:alnum:]_])tools/'
+  '(^|[^[:alnum:]_])t''ools/'
   '[.]nix([^[:alnum:]_-]|$)'
   '\b[a-z]{1,6}-[0-9a-f]{8,}\b'
   '\b(token|secret|password)\b'
@@ -189,13 +199,36 @@ for pattern in "${HTML_ONLY_PATTERNS[@]}"; do
   fi
 done
 
+echo "==> public source scrub"
+SOURCE_PATTERNS=(
+  '/Users/[A-Za-z0-9._ -]+/'
+  'mc[.]nhiro[.]org'
+  '[.]nhiro[.]org'
+  '\bA(KIA|SIA)[0-9A-Z]{16}\b'
+  '\bi-[0-9a-f]{8,17}\b'
+  '\bs3://[A-Za-z0-9._/-]+'
+  'server[.]properties'
+  '[.]nix([^[:alnum:]_-]|$)'
+  '(^|[^[:alnum:]_])t''ools/'
+  '-----BEGIN (RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----'
+  '(^|[^[:alnum:]_])(aws_access_key_id|aws_secret_access_key|rcon[._-]?password)[[:space:]]*[:=]'
+  'https?://[^[:space:])"<>]+(token|secret|password|key)='
+)
+for pattern in "${SOURCE_PATTERNS[@]}"; do
+  if rg -n -i -e "$pattern" -- "${SOURCE_SCRUB_FILES[@]}" >/tmp/mitoujr-public-source-hit.txt; then
+    cat /tmp/mitoujr-public-source-hit.txt >&2
+    echo "error: public source scrub pattern matched: $pattern" >&2
+    exit 1
+  fi
+done
+
 if [ -f "$PRIVATE_FORBIDDEN_REGEX_FILE" ]; then
   echo "==> private local scrub rules: $PRIVATE_FORBIDDEN_REGEX_FILE"
   while IFS= read -r pattern; do
     case "$pattern" in
       ''|'#'*) continue ;;
     esac
-    if rg -n -i -e "$pattern" -- "${SCRUB_FILES[@]}" >/tmp/mitoujr-public-private-hit.txt; then
+    if rg -n -i -e "$pattern" -- "${SOURCE_SCRUB_FILES[@]}" >/tmp/mitoujr-public-private-hit.txt; then
       cat /tmp/mitoujr-public-private-hit.txt >&2
       echo "error: private local scrub pattern matched" >&2
       exit 1
