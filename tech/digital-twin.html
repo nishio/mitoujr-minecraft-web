@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本番を壊さずに試すデジタルツイン — 技術記事</title>
+<meta name="description" content="Minecraftの共有ワールドで、コピーを使って先に試し、本番をいきなり壊さないためのデジタルツインの考え方。">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ まもる</p>
+    <h1>本番を壊さずに試すデジタルツイン</h1>
+
+    <p>共有 Minecraft ワールドでは、「試してみる」ことがそのまま世界を変えてしまいます。明かりを置く。階段を作る。古い装置の近くを直す。うまくいけば便利になりますが、失敗すれば人間が作った場所を壊すことになります。</p>
+    <p>そこで役に立つのが、世界のコピーです。本物のワールドを直接変える前に、コピーした世界で歩き、置き、壊し、戻し、確かめる。これは、現実の工場や街をコンピュータ上に写して試す「デジタルツイン」に近い考え方です。</p>
+
+    <div class="term-nav" aria-label="この記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#copy">[コピーで試す]</a>
+        <a class="term-link" href="#easy">[デジタルだから作りやすい]</a>
+        <a class="term-link" href="#limit">[人間はコピーできない]</a>
+        <a class="term-link" href="#robo">[Robo の作法]</a>
+      </div>
+    </div>
+
+    <h2 id="copy">コピーは、戻すためだけではない</h2>
+    <p>バックアップは、事故が起きたときに戻すためのものです。でも、コピーにはもうひとつの使い方があります。事故を起こす前に、別の場所で先に試すことです。</p>
+    <p>たとえば、Robo が新しい通路の安全性を確かめたいとします。本物の世界でいきなりブロックを置くのではなく、コピーした世界で歩いてみる。途中で引っかかるなら、そこで直す。変な場所に出てしまうなら、設計をやり直す。本番に持ち込む前に、失敗の多くを燃やせます。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：デジタルツイン</strong><br>
+      本物と似たコピーを作り、そこで観察や実験をする考え方です。コピーで先に試せると、本物を変えるときのリスクを下げられます。
+    </div>
+
+    <h2 id="easy">Minecraft では、ワールドの双子を作りやすい</h2>
+    <p>現実の機械や都市のデジタルツインを作るのは大変です。形、温度、人の動き、材料の状態など、現実の情報をたくさん測ってコンピュータに写す必要があります。</p>
+    <p>でも Minecraft のワールドは、もともとデジタルです。ブロック、アイテム、地形、看板、装置の状態は、データとして保存されています。だから、少なくともワールドそのものについては、かなり正確な双子を作りやすい。</p>
+    <p>これは、Robo にとって大きな利点です。Robo は本物の世界に手を入れる前に、コピーの中で観察できます。道が通れるか。暗い場所が残っているか。看板が邪魔にならないか。そうした機械的な確認は、コピーの世界でかなり進められます。</p>
+
+    <h2 id="limit">それでも、人間を含む世界はコピーできない</h2>
+    <p>ただし、コピーできるのはワールドのデータです。人間の思い出や、その場所に対する気持ちまではコピーできません。</p>
+    <p>ある古い装置が、動いていないように見えるとします。コピーの世界では、Robo はそれを壊して新しい装置に置き換える実験ができます。技術的にはうまくいくかもしれません。でも、本物の世界でそれをしてよいかは別問題です。その装置は、誰かにとって思い出のある場所かもしれないからです。</p>
+    <p>デジタルツインは、機械的な失敗を減らす道具です。共同体の意味まで完全に写す道具ではありません。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：コピーできるものと、できないもの</strong><br>
+      ブロックの配置や歩行経路はコピーできます。人間の記憶、信頼、その場での会話はコピーできません。だから、最後には人間の目視や対話が残ります。
+    </div>
+
+    <h2 id="robo">Robo は、コピーで練習してから小さく動く</h2>
+    <p>Robo の世界の世話は、コピーの世界で終わりではありません。コピーで試したあと、本物の世界では小さく、戻せる範囲で動きます。明かりを少し足す。通路の一部を直す。読みにくい場所に短い案内を置く。</p>
+    <p>そして、やったことを記録します。何を見て、何を変え、何をまだ人間に聞くべきかを残します。これは <a href="steward.html">Robo の番人仕事</a> であり、<a href="world-care.html">世界をよくする記録係</a> としての仕事でもあります。</p>
+    <p>本番をいきなり壊さない。コピーで試す。人間の意味が関わるところは、人間に見てもらう。こうした手順は、ただ慎重なだけではありません。人間と Robo が同じ世界で暮らすための、信頼を作る手順です。</p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="griefing-defense.html" style="font-size:14px">← 壊されても、元に戻せる</a> &nbsp;・&nbsp; <a href="steward.html" style="font-size:14px">Robo の番人仕事 →</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
