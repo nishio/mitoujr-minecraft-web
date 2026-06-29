@@ -20,6 +20,7 @@ tech.html             技術記事 一覧
   tech/world-care.html            世界をよくするのは、ブロックを置くことだけではない
   tech/world-care-en.html         World Care: Maintaining a Minecraft World as a Shared Place
   tech/world-cultural-memory.html Minecraft のワールドは文化資産でもある
+  tech/ai-hypothesis-check.html   AI の推測を、世界の証拠で確かめる
   tech/loop-engineering.html      ループエンジニアリングで世界を育てる
   tech/loop-engineering-minecraft.html Loop Engineering と Minecraft：AI と人間が共有ワールドを育てる技術
   tech/loop-engineering-en.html   Loop Engineering for a Living Minecraft World
