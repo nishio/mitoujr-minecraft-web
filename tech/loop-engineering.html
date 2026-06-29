@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ループエンジニアリングで世界を育てる — 技術記事</title>
+<meta name="description" content="未踏ジュニア Minecraft を、観察、実行、検証、記録、フィードバックのループを設計するプロジェクトとして見る解説。">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 考え方</p>
+    <h1>ループエンジニアリングで世界を育てる</h1>
+
+    <p>このプロジェクトは、ひとつの大きな機能を作って終わるものではありません。サーバを起こす。人が遊ぶ。Robo が観察する。小さく直す。結果を確かめる。記録する。次の作業へつなげる。そうしたループをいくつも設計するプロジェクトです。</p>
+    <p>ここでは、それを <strong>ループエンジニアリング</strong> と呼んでみます。大事なのは、1回の正解を当てることではなく、何度も回せる形を作ることです。</p>
+
+    <div class="term-nav" aria-label="この記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#server">[サーバのループ]</a>
+        <a class="term-link" href="#robo">[Robo のループ]</a>
+        <a class="term-link" href="#human">[人間のループ]</a>
+        <a class="term-link" href="#knowledge">[知識のループ]</a>
+      </div>
+    </div>
+
+    <h2 id="server">サーバは、起きて、遊ばれ、眠る</h2>
+    <p>まず見えるのは、サーバの生活リズムです。誰かが遊びたいときに世界が起きる。遊び終わると保存して眠る。次に来た人は、また同じ世界へ戻ってこられる。</p>
+    <p>このループがあると、世界を長く維持しやすくなります。ずっと動かしっぱなしにせず、必要なときだけ動かす。眠る前には世界の状態を残す。次の起動でまた続きから始める。</p>
+    <p>これは <a href="on-demand.html">必要なときだけ目を覚ますサーバ</a> の話です。単なる節約ではなく、長く続けるためのリズムを設計しています。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：ループを設計する</strong><br>
+      ループエンジニアリングでは、「次にまた回せるか」を見ます。起動、保存、停止、復帰が安定していれば、世界は一度きりのイベントではなく、継続する場になります。
+    </div>
+
+    <h2 id="robo">Robo は、見て、動いて、確かめる</h2>
+    <p>Robo の仕事もループです。まず世界を読む。暗い場所、危ない段差、足りない案内を探す。次に、小さく直す。最後に、本当に直ったかを確かめる。</p>
+    <p>このループは、<a href="voyager.html">Robo の頭</a> で説明した「見る、動く、確かめる」に近いものです。ただし、このプロジェクトでは、そこに「戻せること」と「記録すること」が加わります。</p>
+    <p>Robo が小さく動けるのは、失敗しても戻せる範囲を選び、あとから何をしたか分かるようにしているからです。行動する AI を信頼するには、賢さだけでなく、ループの出口と戻り道が必要です。</p>
+
+    <h2>コピーで先に失敗する</h2>
+    <p>本物の世界をいきなり変える前に、コピーした世界で試すこともあります。歩けるか。邪魔にならないか。思った通りに戻せるか。コピーの中で先に失敗できれば、本番での失敗は減ります。</p>
+    <p>これは <a href="digital-twin.html">デジタルツイン</a> の考え方です。コピーで検証し、本物では小さく実行し、結果を見る。ここにも、実験と反映のループがあります。</p>
+
+    <h2 id="human">人間の反応も、ループの一部</h2>
+    <p>Minecraft の世界は、ブロックだけでできているわけではありません。人間が作った場所、人間が覚えている意味、人間が実際に遊んだ感覚があります。だから、機械的に正しいだけでは足りません。</p>
+    <p>人が来る。入口で迷う。楽しい場所を見つける。チャットで感想や指示を残す。Robo はそれを読み、次の改善へつなげます。これは <a href="first-visitor-feedback.html">最初の訪問者から入口を見直す</a> 話や、<a href="spatial-conversation.html">言葉を場所と向きに結びつける</a>話につながります。</p>
+    <p>ループエンジニアリングでは、人間を「外から評価する人」としてだけ扱いません。人間の遊び方そのものが、次の設計入力になります。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：フィードバック</strong><br>
+      実際に使われた結果を見て、次の改善に戻すことです。予想ではなく、起きたことから次の作業を決めると、世界は少しずつ使いやすくなります。
+    </div>
+
+    <h2 id="knowledge">記録と公開も、次のループを作る</h2>
+    <p>世界の中で起きたことは、世界の外にも残します。何を直したのか。なぜそうしたのか。何はまだ未確認なのか。そうした記録があると、次の作業は同じ場所からやり直さずに済みます。</p>
+    <p>さらに、その一部は公開できる記事になります。内部の詳しい運用情報を出すのではなく、考え方として外へ開く。すると、外の人にもこの世界の面白さや、AI と共有ワールドを育てる実験の意味が伝わります。</p>
+    <p>この点で、<a href="world-care.html">世界をよくすること</a> は、ブロックを置くことだけではありません。記録し、説明し、読める形にすることも、次の改善ループを回すための仕事です。</p>
+
+    <h2>強い自動化より、よく回るループ</h2>
+    <p>このプロジェクトが目指しているのは、Robo が何でも勝手に作り替える世界ではありません。むしろ逆です。観察できることを増やし、戻せる範囲を決め、人間の反応を読み、記録を次に渡す。そうして、無理なく回るループを増やしています。</p>
+    <p>世界を長く続けるには、派手な一回の改造より、よく回る小さなループのほうが効きます。Robo は、そのループを人間と一緒に回すために、この世界にいます。</p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="voyager.html" style="font-size:14px">← Robo の頭</a> &nbsp;・&nbsp; <a href="world-care.html" style="font-size:14px">世界をよくする考え方 →</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
