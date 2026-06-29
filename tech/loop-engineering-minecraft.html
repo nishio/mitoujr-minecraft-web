@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loop Engineering と Minecraft：共有ワールドを育てる技術 — 技術記事</title>
+<meta name="description" content="Minecraft の共有ワールドを、AI、人間、記録、公開記事が回り続ける Loop Engineering の実験場として読む大人向け解説。">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 大人向け</p>
+    <h1>Loop Engineering と Minecraft：共有ワールドを育てる技術</h1>
+
+    <p>Minecraft のサーバ運用というと、設定、プラグイン、バックアップ、負荷対策の話に見えます。AI を入れるというと、ボットが何を作れるか、どれくらい自律的に動けるかの話に見えます。</p>
+    <p>でもこのプロジェクトを大人向けに一段抽象化して読むなら、中心にあるのは <strong>Loop Engineering</strong> です。観察し、小さく試し、結果を確かめ、記録し、人間の反応を受け取り、次の行動へ戻す。そのループを、Minecraft という共有ワールドの上に設計する実験です。</p>
+
+    <div class="term-nav" aria-label="この記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#why-minecraft">[なぜ Minecraft か]</a>
+        <a class="term-link" href="#loop">[ループを設計する]</a>
+        <a class="term-link" href="#digital-twin">[デジタルツイン]</a>
+        <a class="term-link" href="#ai">[AI と人間]</a>
+        <a class="term-link" href="#writing">[書くこと]</a>
+      </div>
+    </div>
+
+    <h2 id="why-minecraft">なぜ Minecraft が Loop Engineering に向いているのか</h2>
+    <p>Minecraft は、かなり特殊な実験環境です。世界はブロックとして明示的に保存され、人間の行動は建築、道、看板、暗い場所、放置された装置として残ります。しかもそれらは単なるデータではなく、誰かが遊んだ痕跡でもあります。</p>
+    <p>この性質によって、Minecraft は「AI が環境に作用する」と「人間がその環境をどう受け取るか」を同時に見られる場所になります。ブロックを置けば環境が変わり、人間がそこを歩けば体験が変わり、ログや記録を読めば次の判断が変わる。</p>
+    <p>つまり Minecraft は、ソフトウェアシステムであり、空間であり、コミュニティの記憶でもあります。Loop Engineering の対象として見る価値は、ここにあります。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：Loop Engineering</strong><br>
+      ここでの Loop Engineering は、単に自動化を作ることではありません。入力、実行、検証、記録、フィードバック、次の入力までをひとつの設計対象として扱う考え方です。
+    </div>
+
+    <h2 id="loop">完成品ではなく、回り続ける系を作る</h2>
+    <p>多くの開発では、成果物を「完成した機能」として考えます。しかし共有ワールドでは、完成という状態がかなり不安定です。人が来れば使われ方が変わり、古い建築の意味が見つかり、新しい失敗が起き、AI ができることも変わっていきます。</p>
+    <p>だから、このプロジェクトで設計すべきものは、ひとつの完璧な改修ではありません。次のループが始められる状態です。</p>
+    <ul>
+      <li>世界を観察できること。</li>
+      <li>変更を小さく区切れること。</li>
+      <li>結果を人間と機械の両方が確認できること。</li>
+      <li>失敗した時に戻せること。</li>
+      <li>判断の理由を後から読めること。</li>
+      <li>人間の反応を次の作業へ戻せること。</li>
+    </ul>
+    <p>この条件がそろうと、AI は一発勝負の自動化ではなく、人間と同じ場所で学習し続ける存在に近づきます。</p>
+
+    <h2 id="digital-twin">本番を壊す前に、コピーで失敗する</h2>
+    <p>共有ワールドを直接変えるのは、見た目以上に重い操作です。技術的にはブロックを置くだけでも、その場所が誰かの記憶や導線に関わっていれば、社会的な意味を変えてしまうことがあります。</p>
+    <p>そこで役に立つのが <a href="digital-twin.html">デジタルツイン</a> 的な考え方です。本物のワールドをいきなり変えるのではなく、コピーした世界や小さな実験場で先に試す。歩けるか、壊れないか、戻せるかを先に見てから、本番では小さく反映します。</p>
+    <p>ただし Minecraft のデジタルツインには限界もあります。ワールドのブロック状態は写せても、人間がその場所をどう感じるかまでは完全には写せません。コピーで機械的な危険を減らし、本番では人間の反応を受け取る。この二段構えが重要です。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：コピーで検証できること</strong><br>
+      コピーした世界では、配置、移動可能性、破壊範囲、巻き戻しやすさを検証できます。一方で、愛着、違和感、保存したい記憶は、人間が本物の世界でどう反応するかを見る必要があります。
+    </div>
+
+    <h2 id="ai">AI を道具ではなく、ループの参加者として扱う</h2>
+    <p>Robo は、命令を受けて結果だけを返す道具としても作れます。しかしこのプロジェクトでは、Robo をもう少し違う位置に置いています。世界を観察し、分からないことを残し、人間の反応を待ち、次の小さな改善へつなげる存在です。</p>
+    <p>これは <a href="ai-friend.html">AI を道具ではなく友人として見る</a>発想にもつながります。ただし、ここで言う友人性は、感情的な擬人化だけではありません。共有空間の中で、同じ対象を見て、行動の結果を共有し、過去の記録から次のふるまいを変えるという関係です。</p>
+    <p>人間もまた、外から評価するだけの存在ではありません。人間が迷う、気づく、短くチャットする、違和感を伝える。その行動自体が <a href="human-in-the-loop.html">Human in the Loop</a> の入力になります。</p>
+
+    <h2>強い AI ではなく、強いループを作る</h2>
+    <p>AI プロジェクトでは、モデルをより賢くすることに注目が集まりがちです。しかし共有ワールドに AI を入れる時、賢さだけでは足りません。観察の範囲、実行の境界、検証の方法、記録の粒度、人間への戻し方が弱ければ、賢い AI ほど危険な変更を速く進めてしまいます。</p>
+    <p>この意味で、Robo の能力を上げることと同じくらい、Robo の周りのループを強くすることが重要です。何を見てから動くのか。どこまでなら一人で動いてよいのか。どこから人間の判断を待つのか。失敗した時、どう記録に戻るのか。</p>
+    <p>Loop Engineering は、AI の出力そのものではなく、AI が継続的に行動するための環境設計です。</p>
+
+    <h2 id="writing">書くことも、世界を変える操作である</h2>
+    <p>このプロジェクトでは、記録や公開記事もループの一部です。ワールドの中に照明を置くことだけが改善ではありません。なぜその照明が必要だったのか、何が未確認なのか、次に何を見るべきなのかを書くことも、次の行動を変えます。</p>
+    <p>公開記事には別の役割もあります。内部の運用情報を出すのではなく、外部の人が読める形で問いを共有することです。古い Minecraft ワールドをどう世話するのか。AI は人間の作った場所へどう入るべきなのか。デジタルツインと人間のフィードバックをどう組み合わせるのか。</p>
+    <p>書くことで、世界の中の経験が外へ出ます。読まれることで、外からの問いや視点が戻ってきます。これもまた、Loop Engineering の一部です。</p>
+
+    <h2>このプロジェクトの作品は、サーバだけではない</h2>
+    <p>未踏ジュニア Minecraft の作品性は、動いているサーバや Robo だけにあるわけではありません。サーバ、人間、AI、記録、公開記事、検証用のコピー、失敗を戻す仕組みが、相互に影響しながら回ることにあります。</p>
+    <p>Minecraft は、そのループを小さく見える形にしてくれます。暗かった場所が明るくなる。迷った場所に案内ができる。古い装置を壊す前に読む。人間が来て、反応し、次の改善が決まる。</p>
+    <p>Loop Engineering と Minecraft を結びつけると、ゲームサーバ運用は単なる保守ではなくなります。人間と AI が同じ場所で暮らしながら、世界を少しずつ理解し直すための技術になります。</p>
+
+    <div class="term-nav" aria-label="関連する記事">
+      <p class="term-nav-title">関連する記事</p>
+      <div class="term-links">
+        <a class="term-link" href="loop-engineering.html">[ループエンジニアリング入門]</a>
+        <a class="term-link" href="digital-twin.html">[デジタルツイン]</a>
+        <a class="term-link" href="embodied-ai.html">[AI が同じ世界で過ごす実験]</a>
+        <a class="term-link" href="human-in-the-loop.html">[人間も実験の一部]</a>
+      </div>
+    </div>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="loop-engineering.html" style="font-size:14px">← 入門版</a> &nbsp;・&nbsp; <a href="embodied-ai.html" style="font-size:14px">AI の実験として読む →</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>

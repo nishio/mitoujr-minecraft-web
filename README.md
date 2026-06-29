@@ -20,6 +20,7 @@ tech.html             技術記事 一覧
   tech/world-care.html            世界をよくするのは、ブロックを置くことだけではない
   tech/world-care-en.html         World Care: Maintaining a Minecraft World as a Shared Place
   tech/loop-engineering.html      ループエンジニアリングで世界を育てる
+  tech/loop-engineering-minecraft.html Loop Engineering と Minecraft：共有ワールドを育てる技術
   tech/loop-engineering-en.html   Loop Engineering for a Living Minecraft World
   tech/old-devices.html           古い装置を、壊す前に読む
   tech/rainbow-fall.html          落ちるための塔に、帰れる道を作る
