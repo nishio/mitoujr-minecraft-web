@@ -10,13 +10,14 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 SERVE=1
+RESPONSIVE=1
 PORT="${PORT:-}"
 PRIVATE_FORBIDDEN_REGEX_FILE="${PRIVATE_FORBIDDEN_REGEX_FILE:-$HOME/.config/mitoujr-public-forbidden.regex}"
 
 usage() {
   cat <<'USAGE'
 usage:
-  scripts/check-public-site.sh [--no-serve]
+  scripts/check-public-site.sh [--no-serve] [--no-responsive]
 
 Checks:
   - git diff whitespace/errors
@@ -24,6 +25,7 @@ Checks:
   - sitemap.xml and robots.txt are current
   - generic public scrub patterns in HTML/CSS
   - local HTTP 200 for every HTML page, unless --no-serve is passed
+  - responsive overflow and image checks with local Chrome, when available
 
 Optional:
   PRIVATE_FORBIDDEN_REGEX_FILE=/path/to/local.regex
@@ -36,6 +38,7 @@ USAGE
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --no-serve) SERVE=0 ;;
+    --no-responsive) RESPONSIVE=0 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "unknown arg: $1" >&2; usage >&2; exit 2 ;;
   esac
@@ -223,6 +226,15 @@ PY
     esac
   done
   echo "ok: local HTTP served public html/xml/robots files"
+
+  if [ "$RESPONSIVE" -eq 1 ]; then
+    echo "==> responsive overflow check"
+    if command -v node >/dev/null 2>&1; then
+      node scripts/check-responsive.mjs --base-url "http://127.0.0.1:$PORT"
+    else
+      echo "skip: node not found for responsive check"
+    fi
+  fi
 fi
 
 echo "ok: public site checks complete"
