@@ -21,6 +21,7 @@ usage:
 Checks:
   - git diff whitespace/errors
   - HTML parse and local href/src file targets
+  - sitemap.xml and robots.txt are current
   - generic public scrub patterns in HTML/CSS
   - local HTTP 200 for every HTML page, unless --no-serve is passed
 
@@ -117,11 +118,27 @@ if errors:
 print(f"ok: parsed {len(html_paths)} html files")
 PY
 
+echo "==> sitemap and robots"
+tmp_sitemap="$(mktemp "${TMPDIR:-/tmp}/mitoujr-public-sitemap.XXXXXX")"
+python3 scripts/generate-sitemap.py >"$tmp_sitemap"
+if ! cmp -s sitemap.xml "$tmp_sitemap"; then
+  echo "error: sitemap.xml is stale; run scripts/generate-sitemap.py > sitemap.xml" >&2
+  diff -u sitemap.xml "$tmp_sitemap" >&2 || true
+  rm -f "$tmp_sitemap"
+  exit 1
+fi
+rm -f "$tmp_sitemap"
+if ! grep -Fx 'Sitemap: https://nishio.github.io/mitoujr-minecraft-web/sitemap.xml' robots.txt >/dev/null; then
+  echo "error: robots.txt does not reference the public sitemap" >&2
+  exit 1
+fi
+echo "ok: sitemap covers $(find . -name '*.html' -type f | wc -l | tr -d ' ') html files"
+
 echo "==> generic public scrub"
 SCRUB_FILES=()
 while IFS= read -r file; do
   SCRUB_FILES+=("$file")
-done < <(find . \( -name '*.html' -o -path './css/*.css' \) -type f | sort)
+done < <(find . \( -name '*.html' -o -name '*.xml' -o -name 'robots.txt' -o -path './css/*.css' \) -type f | sort)
 HTML_FILES=()
 while IFS= read -r file; do
   HTML_FILES+=("$file")
@@ -199,13 +216,13 @@ PY
   fi
   for file in "${SCRUB_FILES[@]}"; do
     case "$file" in
-      *.html)
+      *.html|*.xml|./robots.txt)
         url_path="${file#./}"
         curl -fsS -o /dev/null "http://127.0.0.1:$PORT/$url_path"
         ;;
     esac
   done
-  echo "ok: local HTTP served $(find . -name '*.html' -type f | wc -l | tr -d ' ') html files"
+  echo "ok: local HTTP served public html/xml/robots files"
 fi
 
 echo "ok: public site checks complete"

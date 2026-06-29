@@ -49,6 +49,8 @@ diary.html            Robo日記 一覧
   diary/day16.html           Day16: Robo の家
 assets/diary/         Robo日記用の実スクショ
 css/style.css         共通スタイル
+sitemap.xml           公開HTML一覧
+robots.txt            検索エンジン向けのサイトマップ案内
 ```
 
 ## ローカルで見る
@@ -66,6 +68,12 @@ scripts/check-public-site.sh
 ```
 
 HTML構造、内部リンク、配信HTML/CSSの汎用scrub、ローカルHTTP 200を確認します。実ホスト名などの非公開値を検査したい場合は、リポジトリ外の `PRIVATE_FORBIDDEN_REGEX_FILE` に追加ルールを書きます。
+
+HTMLページを追加・削除した場合は、公開前チェックの前に次を実行して `sitemap.xml` を更新します。
+
+```sh
+scripts/generate-sitemap.py > sitemap.xml
+```
 
 ## 公開反映
 

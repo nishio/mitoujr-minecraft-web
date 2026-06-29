@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nishio.github.io/mitoujr-minecraft-web/sitemap.xml

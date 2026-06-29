@@ -24,7 +24,7 @@ Default: --dry-run
 What --live does:
   1. runs scripts/check-public-site.sh
   2. pushes the current branch to origin/main
-  3. waits for GitHub Pages URLs to return HTTP 200 and match local HTML
+  3. waits for GitHub Pages URLs to return HTTP 200 and match local files
 
 Run --live only after explicit publish GO.
 USAGE
@@ -85,21 +85,21 @@ fi
 echo "==> prepublish check"
 scripts/check-public-site.sh
 
-changed_html=()
+changed_public_files=()
 if git rev-parse --verify "$REMOTE/$BRANCH" >/dev/null 2>&1; then
   while IFS= read -r path; do
     case "$path" in
-      *.html) changed_html+=("$path") ;;
+      *.html|sitemap.xml|robots.txt) changed_public_files+=("$path") ;;
     esac
   done < <(git diff --name-only "$REMOTE/$BRANCH"..HEAD)
 fi
-if [ "${#changed_html[@]}" -eq 0 ]; then
-  changed_html=("index.html")
+if [ "${#changed_public_files[@]}" -eq 0 ]; then
+  changed_public_files=("index.html")
 fi
 
-echo "==> pages to verify"
-printf '  %s\n' "${changed_html[@]}"
-echo "verification: HTTP 200 and exact HTML content match"
+echo "==> public files to verify"
+printf '  %s\n' "${changed_public_files[@]}"
+echo "verification: HTTP 200 and exact local content match"
 
 if [ "$LIVE" -ne 1 ]; then
   cat <<EOF
@@ -114,7 +114,7 @@ fi
 echo "==> push"
 git push "$REMOTE" "HEAD:$BRANCH"
 
-echo "==> wait for GitHub Pages HTML match"
+echo "==> wait for GitHub Pages content match"
 deadline=$(( $(date +%s) + TIMEOUT_SECONDS ))
 tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/mitoujr-pages-check.XXXXXX")"
 cleanup_pages_check() {
@@ -123,7 +123,7 @@ cleanup_pages_check() {
 trap cleanup_pages_check EXIT
 while :; do
   all_ok=1
-  for path in "${changed_html[@]}"; do
+  for path in "${changed_public_files[@]}"; do
     url="$BASE_URL/${path#./}"
     live_file="$tmp_dir/$(printf '%s' "$path" | tr '/.' '__')"
     status="$(curl -fsS -o "$live_file" -w '%{http_code}' "$url" || true)"
@@ -150,5 +150,5 @@ done
 cat <<EOF
 published: $head_commit
 live: $BASE_URL/
-verified: changed HTML matches GitHub Pages content
+verified: changed public files match GitHub Pages content
 EOF
