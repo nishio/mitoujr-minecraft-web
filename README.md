@@ -40,6 +40,7 @@ tech.html             技術記事 一覧
   tech/steward.html               Robo が番人として世界を見回る
   tech/embodied-ai.html           AI が同じ世界で過ごす実験
   tech/ai-friend.html             AI を道具ではなく友人として見る
+  tech/human-in-the-loop.html      人間も実験の一部になる
   tech/walking-with-robo.html      Robo とチャットで一緒に歩く
   tech/history.html               一度、死にかけた世界の話
 diary.html            Robo日記 一覧

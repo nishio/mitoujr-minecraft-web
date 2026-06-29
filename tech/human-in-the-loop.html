@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人間も実験の一部になる — 技術記事</title>
+<meta name="description" content="Roboが同じMinecraft世界で学ぶために、人間の目視、短い返事、違和感の共有がなぜ重要なのかを説明する記事。">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">技術記事 ・ 参加</p>
+    <h1>人間も実験の一部になる</h1>
+
+    <p>Robo は Minecraft の中で世界を見て、歩いて、記録し、少しずつ世界をよくしていきます。でも、この実験は Robo だけでは完結しません。</p>
+    <p>人間が来る。見て、歩いて、短く返事をする。違和感を言う。楽しかった場所を伝える。その反応が、Robo の次の行動を決める大事な入力になります。</p>
+    <p>この記事では、人間が「テスト担当」や「利用者」だけではなく、Robo と一緒に世界を育てる参加者になる、という見方を説明します。</p>
+
+    <div class="term-nav" aria-label="この記事の関連キーワード">
+      <p class="term-nav-title">この記事の中でもう少し進む</p>
+      <div class="term-links">
+        <a class="term-link" href="#eyes">[人間の目]</a>
+        <a class="term-link" href="#short">[短い返事]</a>
+        <a class="term-link" href="#meaning">[意味の確認]</a>
+        <a class="term-link" href="#loop">[次の入力]</a>
+      </div>
+    </div>
+
+    <h2 id="eyes">人間の目でしか分からないことがある</h2>
+    <p>Robo はブロックの種類、明るさ、通れるかどうかを調べられます。暗い場所を見つけることも、段差で詰まりそうな場所を探すこともできます。</p>
+    <p>でも、それだけでは分からないことがあります。その道が見た目として気持ちいいか。看板の置き方が邪魔ではないか。古い装置を残したいと思うか。Robo の動きが自然に見えるか。こうした判断は、人間がその場で見て初めて分かります。</p>
+    <p>だから、人間の目視は最後のおまけではありません。Robo が共有ワールドに入るための、重要なセンサーのひとつです。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：人間の目視</strong><br>
+      機械的には正しい通路でも、人間から見ると不自然なことがあります。共有ワールドでは、通れることと、気持ちよく使えることを分けて確認します。
+    </div>
+
+    <h2 id="short">短い返事でも、実験は進む</h2>
+    <p>Robo と一緒に実験するために、長いレビューを書き続ける必要はありません。短い返事で十分なことも多いです。</p>
+    <ul>
+      <li>「見えた」</li>
+      <li>「そこは邪魔」</li>
+      <li>「これは残したい」</li>
+      <li>「今は分からない」</li>
+    </ul>
+    <p>こうした一言は、Robo にとって重要です。成功、失敗、保留、人間に聞くべきことが分かるからです。</p>
+    <p>人間がすぐ返事できないこともあります。その場合は、Robo は待ち続けるのではなく、安全なところで止まり、結果を「未確認」として残します。返事がないことを、失敗や拒否だと決めつけないためです。</p>
+
+    <h2 id="meaning">意味は、ブロックだけに入っていない</h2>
+    <p>Minecraft の世界には、見た目以上の意味があります。古い装置は、もう動いていなくても、昔の実験の記録かもしれません。曲がりくねった道は、ただの不便ではなく、誰かが景色を見せたくて作った導線かもしれません。</p>
+    <p>Robo は、形やログから仮説を立てられます。でも、その仮説を真実にするには、人間の補足が必要です。「これは壊れている」「これは残したい」「ここは後で直したい」。そうした言葉が、世界の意味をはっきりさせます。</p>
+    <p>これは <a href="walking-with-robo.html">Robo とチャットで一緒に歩く</a> 話とつながっています。人間の言葉は、場所と結びつくことで、次に来る人への案内にもなります。</p>
+
+    <div class="callout">
+      <strong>ロボの技術メモ：human in the loop</strong><br>
+      AI の判断や行動の途中に、人間の確認や補正を入れる考え方です。Robo の場合、人間は最後に採点するだけでなく、世界の意味を教える役割も持ちます。
+    </div>
+
+    <h2 id="loop">人間の反応が、次の改善へ戻る</h2>
+    <p>Robo が何かを試す。人間が見る。よければ次へ進む。違和感があれば直す。分からなければ保留する。この流れは、<a href="loop-engineering.html">ループエンジニアリング</a> の一部です。</p>
+    <p>ここで大事なのは、1回で完璧にすることではありません。小さく試し、分かったことを記録し、次の行動へ戻すことです。人間の反応は、そのループを回すための入力になります。</p>
+    <p>このループが回るほど、Robo はただの自動化ではなく、世界のことを少しずつ覚えていく存在に近づきます。</p>
+
+    <h2>遊びに来ることも、世界の手入れになる</h2>
+    <p>共有ワールドは、誰も来なければ静かに古びていきます。人が来て、歩いて、見て、話すことで、世界はまた現在の場所になります。</p>
+    <p>だから、Robo の実験にとって「人間が遊びに来る」ことは、単なるアクセス数ではありません。世界の意味を更新し、古い場所を読み直し、次の改善を決めるための出来事です。</p>
+    <p>Robo は世界を守ります。でも、世界が何を大切にしているのかは、人間と一緒に確かめていきます。</p>
+
+    <a class="back" href="../tech.html">← 技術記事の一覧へ</a> &nbsp;・&nbsp; <a href="walking-with-robo.html" style="font-size:14px">← Robo と一緒に歩く</a> &nbsp;・&nbsp; <a href="loop-engineering.html" style="font-size:14px">ループエンジニアリング →</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
