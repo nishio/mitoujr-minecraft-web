@@ -17,6 +17,7 @@ tech.html             技術記事 一覧
   tech/digital-twin.html          本番を壊さずに試すデジタルツイン
   tech/iac.html                   世界を“設計図”で持つ
   tech/world-care.html            世界をよくするのは、ブロックを置くことだけではない
+  tech/world-care-en.html         World Care: Maintaining a Minecraft World as a Shared Place
   tech/loop-engineering.html      ループエンジニアリングで世界を育てる
   tech/old-devices.html           古い装置を、壊す前に読む
   tech/rainbow-fall.html          落ちるための塔に、帰れる道を作る

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Care: Maintaining a Minecraft World as a Shared Place — Article</title>
+<meta name="description" content="An English introduction to the Mitou Junior Minecraft world-care project: preserving old builds, making arrivals readable, and using Robo as a bounded AI steward.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/robo-face-180.png">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/brand/robo-face-180.png" width="26" height="26" alt="Robo">
+      <span class="brand-text">未踏ジュニア Minecraft</span>
+    </a>
+    <a class="navlink active" href="../tech.html">技術記事</a>
+    <a class="navlink" href="../diary.html">Robo日記</a>
+    <a class="navlink" href="../about.html">このサーバについて</a>
+  </nav>
+</header>
+
+<main class="container">
+  <article class="prose">
+    <p class="article-meta">Article ・ English</p>
+    <h1>World Care: Maintaining a Minecraft World as a Shared Place</h1>
+
+    <p>This is not a server advertisement. It is a field note about a small Minecraft world that has been alive, asleep, and alive again.</p>
+    <p>Most Minecraft posts show the finished build: a castle, a redstone machine, a resource pack, a map. This project is about a different layer of Minecraft creativity: <strong>world care</strong>. How do you take an old shared world, keep its history intact, make it welcoming again, and avoid breaking the strange little things that people built years ago?</p>
+
+    <div class="term-nav" aria-label="Sections in this article">
+      <p class="term-nav-title">Read this article by theme</p>
+      <div class="term-links">
+        <a class="term-link" href="#care">[world care]</a>
+        <a class="term-link" href="#arrival">[arrival]</a>
+        <a class="term-link" href="#archaeology">[old machines]</a>
+        <a class="term-link" href="#robo">[Robo]</a>
+        <a class="term-link" href="#human-loop">[human loop]</a>
+      </div>
+    </div>
+
+    <h2 id="care">A world that needed care</h2>
+    <p>The world began as a community Minecraft space for learning and experimenting. After a long quiet period, it came back on a modern server version. That sounds like a technical migration, but the harder question was social and creative.</p>
+    <ul>
+      <li>What should be preserved as history?</li>
+      <li>What should be repaired for visitors?</li>
+      <li>What should be left untouched because nobody understands it yet?</li>
+      <li>How can a returning player know where they are and what matters?</li>
+    </ul>
+    <p>Those questions changed the work from "upgrade the server" to "care for a place."</p>
+
+    <h2 id="arrival">The arrival experience</h2>
+    <p>The first few seconds in a world matter. A player should not spawn into confusion.</p>
+    <p>So the arrival area became a kind of promise. You arrive facing a recognizable landmark. The path out of spawn should be visible. Dark spots and awkward edges should be fixed before they become friction. Old builds should be introduced, not treated as random ruins.</p>
+    <p>This is ordinary Minecraft work: lanterns, paths, signs, protected landmarks. But it is also interface design. A Minecraft world has onboarding, navigation, and trust problems just like a website or a tool.</p>
+
+    <div class="callout">
+      <strong>Robo's technical note: world care</strong><br>
+      World care is not only building new things. It includes preserving context, making routes readable, recording decisions, and keeping changes small enough to review.
+    </div>
+
+    <h2 id="archaeology">Old machines are archaeology</h2>
+    <p>The world contains old farms, transport systems, command blocks, decorative systems, image walls, and player-made experiments. Some of them still work. Some are broken because old plugins changed or disappeared. Some are valuable even if they should never be switched on again.</p>
+    <p>The rule we use is simple: <strong>read before repairing</strong>.</p>
+    <p>An old machine can be preserved as a museum piece, explained with a sign, lightly repaired, replaced with a modern teaching example, or left alone until a human who remembers it can review it. The goal is not to make every machine run again. The goal is to respect the world as a record of what people tried.</p>
+
+    <h2 id="robo">Robo, the steward character</h2>
+    <p>The project also has an AI steward character called Robo. Robo is not a free-form agent allowed to do anything. It works with small, bounded skills: look around an entrance area, find dark spots, check whether a route is walkable, propose simple signs, and keep a short memory of what was observed.</p>
+    <p>The important design constraint is accountability. When Robo changes the world, the change should be small, visible, reversible, and attributable. That makes it possible to let an AI help maintain a shared world without pretending that it understands the community by default.</p>
+    <p>For me, that is the interesting part: Minecraft is a place where AI behavior becomes physical. If Robo places a lantern badly, everyone can see it. If it helps a path become readable, everyone can feel it.</p>
+
+    <h2 id="human-loop">The human loop</h2>
+    <p>The AI part is only half of the experiment. Robo can count blocks, notice dark spots, and check whether a route is passable. But it cannot decide, by itself, whether a path feels welcoming, whether a sign is in the way, or whether an old machine should be kept because it means something to people who remember it.</p>
+    <p>That is where humans become part of the loop. A useful response can be very small: "I can see it", "this feels confusing", "please do not remove that", or "I do not know yet". Those short reactions change what Robo should do next.</p>
+    <p>In that sense, the project is not trying to replace human judgment with an AI caretaker. It is trying to make a loop where the AI can observe, act carefully, show what happened, and then let human feedback shape the next step.</p>
+
+    <div class="callout">
+      <strong>Robo's technical note: loop engineering</strong><br>
+      A healthy loop observes, acts in a bounded way, verifies the result, records what happened, and turns that record into the next input.
+    </div>
+
+    <h2>Writing is part of the world</h2>
+    <p>One lesson from this project is that the world does not only exist inside Minecraft. It also exists in maintenance notes, public articles, screenshots, route descriptions, design decisions, and the stories people tell when they return.</p>
+    <p>Writing about the world is not separate from improving it. A good article can help a returning player understand why an old machine matters. A short note can stop a future maintainer from destroying something by accident. A public page can show that this is not just a server, but a long-running shared experiment.</p>
+
+    <h2>What I learned</h2>
+    <p>Minecraft worlds age. They accumulate history, broken assumptions, abandoned plugins, inside jokes, and half-finished ideas. That is not a defect. It is what makes them feel alive.</p>
+    <p>The creative challenge is not only building new things. It is learning how to care for what already exists.</p>
+    <p>The question I want to leave open is: what would make this world easier to understand, easier to return to, and harder to accidentally erase?</p>
+    <p>Sometimes the answer is a new build. Sometimes it is a lantern. Sometimes it is a sign. Sometimes it is a written note. And sometimes the best improvement is to stop, look carefully, and let the world tell you what it has become.</p>
+
+    <div class="term-nav" aria-label="Related articles">
+      <p class="term-nav-title">Related articles</p>
+      <div class="term-links">
+        <a class="term-link" href="steward.html">[Robo as steward]</a>
+        <a class="term-link" href="human-in-the-loop.html">[human in the loop]</a>
+        <a class="term-link" href="loop-engineering.html">[loop engineering]</a>
+        <a class="term-link" href="world-care.html">[Japanese world-care article]</a>
+      </div>
+    </div>
+
+    <a class="back" href="../tech.html">← Back to article index</a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>未踏ジュニア Minecraft — Robo が守る世界</span>
+    <span>※ 接続情報・サーバ内部の構成・個人情報などは、安全のためこのサイトには載せていません。</span>
+  </div>
+</footer>
+</body>
+</html>
