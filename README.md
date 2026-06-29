@@ -22,7 +22,7 @@ tech.html             技術記事 一覧
   tech/world-cultural-memory.html Minecraft のワールドは文化資産でもある
   tech/ai-hypothesis-check.html   AI の推測を、世界の証拠で確かめる
   tech/loop-engineering.html      ループエンジニアリングで世界を育てる
-  tech/loop-engineering-minecraft.html Loop Engineering と Minecraft：AI と人間が共有ワールドを育てる技術
+  tech/loop-engineering-minecraft.html Loop Engineering と Minecraft：AI導入を変更の統治として設計する
   tech/loop-engineering-en.html   Loop Engineering for a Living Minecraft World
   tech/old-devices.html           古い装置を、壊す前に読む
   tech/rainbow-fall.html          落ちるための塔に、帰れる道を作る
