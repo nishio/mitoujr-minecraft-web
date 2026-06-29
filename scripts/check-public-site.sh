@@ -11,13 +11,15 @@ cd "$ROOT"
 
 SERVE=1
 RESPONSIVE=1
+RESPONSIVE_CHANGED=0
+RESPONSIVE_BASE="${RESPONSIVE_BASE:-origin/main}"
 PORT="${PORT:-}"
 PRIVATE_FORBIDDEN_REGEX_FILE="${PRIVATE_FORBIDDEN_REGEX_FILE:-$HOME/.config/mitoujr-public-forbidden.regex}"
 
 usage() {
   cat <<'USAGE'
 usage:
-  scripts/check-public-site.sh [--no-serve] [--no-responsive]
+  scripts/check-public-site.sh [--no-serve] [--no-responsive] [--responsive-changed] [--responsive-base <ref>]
 
 Checks:
   - git diff whitespace/errors
@@ -26,8 +28,12 @@ Checks:
   - generic public scrub patterns in HTML/CSS
   - local HTTP 200 for every HTML page, unless --no-serve is passed
   - responsive overflow and image checks with local Chrome, when available
+    Use --responsive-changed to run that expensive responsive pass only against
+    HTML pages changed from the base ref plus staged, unstaged, and untracked
+    local HTML files.
 
 Optional:
+  RESPONSIVE_BASE=origin/main
   PRIVATE_FORBIDDEN_REGEX_FILE=/path/to/local.regex
 
 The optional regex file is for exact private values and must stay outside this
@@ -39,6 +45,15 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     --no-serve) SERVE=0 ;;
     --no-responsive) RESPONSIVE=0 ;;
+    --responsive-changed) RESPONSIVE_CHANGED=1 ;;
+    --responsive-base)
+      shift
+      if [ "$#" -eq 0 ]; then
+        echo "missing value for --responsive-base" >&2
+        exit 2
+      fi
+      RESPONSIVE_BASE="$1"
+      ;;
     -h|--help) usage; exit 0 ;;
     *) echo "unknown arg: $1" >&2; usage >&2; exit 2 ;;
   esac
@@ -230,7 +245,32 @@ PY
   if [ "$RESPONSIVE" -eq 1 ]; then
     echo "==> responsive overflow check"
     if command -v node >/dev/null 2>&1; then
-      node scripts/check-responsive.mjs --base-url "http://127.0.0.1:$PORT"
+      if [ "$RESPONSIVE_CHANGED" -eq 1 ]; then
+        changed_pages="$log_dir/responsive-pages.txt"
+        {
+          if git rev-parse --verify --quiet "$RESPONSIVE_BASE" >/dev/null; then
+            git diff --name-only --diff-filter=ACMRT "$RESPONSIVE_BASE"...HEAD -- '*.html'
+          else
+            echo "warning: responsive base not found, skipping committed diff: $RESPONSIVE_BASE" >&2
+          fi
+          git diff --name-only --diff-filter=ACMRT -- '*.html'
+          git diff --cached --name-only --diff-filter=ACMRT -- '*.html'
+          git ls-files --others --exclude-standard -- '*.html'
+        } | sed '/^$/d' | sort -u >"$changed_pages"
+        if [ ! -s "$changed_pages" ]; then
+          echo "skip: no changed HTML pages for responsive check"
+        else
+          page_count="$(wc -l <"$changed_pages" | tr -d ' ')"
+          echo "checking $page_count changed HTML page(s) against $RESPONSIVE_BASE"
+          responsive_args=(--base-url "http://127.0.0.1:$PORT")
+          while IFS= read -r page; do
+            responsive_args+=(--page "$page")
+          done <"$changed_pages"
+          node scripts/check-responsive.mjs "${responsive_args[@]}"
+        fi
+      else
+        node scripts/check-responsive.mjs --base-url "http://127.0.0.1:$PORT"
+      fi
     else
       echo "skip: node not found for responsive check"
     fi

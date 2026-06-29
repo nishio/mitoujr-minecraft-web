@@ -106,7 +106,7 @@ class Cdp {
 
 const root = resolve(".");
 let baseUrl = "";
-let pageFilter = "";
+const pageFilters = [];
 const viewports = [
   { name: "mobile", width: 390, height: 844 },
   { name: "desktop", width: 1280, height: 720 },
@@ -117,7 +117,7 @@ for (let i = 2; i < process.argv.length; i += 1) {
   if (arg === "--base-url") {
     baseUrl = process.argv[++i] || "";
   } else if (arg === "--page") {
-    pageFilter = (process.argv[++i] || "").replace(/^\/+/, "");
+    pageFilters.push((process.argv[++i] || "").replace(/^\/+/, ""));
   } else if (arg === "-h" || arg === "--help") {
     usage(0);
   } else {
@@ -148,10 +148,16 @@ let htmlPages = (await walk(root))
   .map((path) => relative(root, path).split("/").join("/"))
   .sort();
 
-if (pageFilter) {
-  htmlPages = htmlPages.filter((page) => page === pageFilter);
+if (pageFilters.length > 0) {
+  const filterSet = new Set(pageFilters);
+  htmlPages = htmlPages.filter((page) => filterSet.has(page));
   if (htmlPages.length === 0) {
-    console.error(`error: --page did not match an HTML file: ${pageFilter}`);
+    console.error(`error: --page did not match any HTML file: ${pageFilters.join(", ")}`);
+    process.exit(2);
+  }
+  const missing = pageFilters.filter((page) => !htmlPages.includes(page));
+  if (missing.length > 0) {
+    console.error(`error: --page did not match HTML file(s): ${missing.join(", ")}`);
     process.exit(2);
   }
 }
@@ -260,7 +266,7 @@ function usage(code) {
 Uses local Chrome/Chromium headless to check every HTML page at mobile and
 desktop viewport widths for horizontal overflow and missing images. If Chrome
 is not available, the check prints a skip message and exits successfully.
-Use --page to check one HTML file while debugging.`);
+Repeat --page to check a subset while debugging.`);
   process.exit(code);
 }
 

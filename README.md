@@ -85,6 +85,12 @@ scripts/generate-sitemap.py > sitemap.xml
 scripts/check-responsive.mjs --base-url http://127.0.0.1:8123 --page tech/example.html
 ```
 
+公開待ちの差分が多いときは、変更されたHTMLだけresponsive確認できます。
+
+```sh
+scripts/check-public-site.sh --responsive-changed
+```
+
 ## 公開反映
 
 ```sh
