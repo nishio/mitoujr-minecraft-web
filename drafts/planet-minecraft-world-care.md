@@ -23,7 +23,7 @@ Suggested links:
 
 - Project site: `https://nishio.github.io/mitoujr-minecraft-web/`
 - English article: `https://nishio.github.io/mitoujr-minecraft-web/tech/world-care-en.html`
-- Loop engineering article: `https://nishio.github.io/mitoujr-minecraft-web/tech/loop-engineering.html`
+- Loop engineering article: `https://nishio.github.io/mitoujr-minecraft-web/tech/loop-engineering-en.html`
 
 If the English article or loop engineering page is not live yet, publish the
 site first after explicit GO, then post this externally.

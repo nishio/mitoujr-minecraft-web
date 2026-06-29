@@ -25,11 +25,24 @@ class Cdp {
     socket.addEventListener("message", (event) => this.onMessage(event));
   }
 
-  send(method, params = {}) {
+  send(method, params = {}, timeoutMs = 10_000) {
     const id = this.nextId++;
     this.socket.send(JSON.stringify({ id, method, params }));
     return new Promise((resolveSend, rejectSend) => {
-      this.pending.set(id, { resolve: resolveSend, reject: rejectSend });
+      const timer = setTimeout(() => {
+        this.pending.delete(id);
+        rejectSend(new Error(`timeout waiting for CDP ${method}`));
+      }, timeoutMs);
+      this.pending.set(id, {
+        resolve: (value) => {
+          clearTimeout(timer);
+          resolveSend(value);
+        },
+        reject: (error) => {
+          clearTimeout(timer);
+          rejectSend(error);
+        },
+      });
     });
   }
 
@@ -59,7 +72,7 @@ class Cdp {
       expression,
       awaitPromise: true,
       returnByValue: true,
-    });
+    }, 15_000);
     if (response.exceptionDetails) {
       throw new Error(response.exceptionDetails.text || "Runtime.evaluate failed");
     }
@@ -93,6 +106,7 @@ class Cdp {
 
 const root = resolve(".");
 let baseUrl = "";
+let pageFilter = "";
 const viewports = [
   { name: "mobile", width: 390, height: 844 },
   { name: "desktop", width: 1280, height: 720 },
@@ -102,6 +116,8 @@ for (let i = 2; i < process.argv.length; i += 1) {
   const arg = process.argv[i];
   if (arg === "--base-url") {
     baseUrl = process.argv[++i] || "";
+  } else if (arg === "--page") {
+    pageFilter = (process.argv[++i] || "").replace(/^\/+/, "");
   } else if (arg === "-h" || arg === "--help") {
     usage(0);
   } else {
@@ -127,10 +143,18 @@ if (!chrome) {
   process.exit(0);
 }
 
-const htmlPages = (await walk(root))
+let htmlPages = (await walk(root))
   .filter((path) => path.endsWith(".html"))
   .map((path) => relative(root, path).split("/").join("/"))
   .sort();
+
+if (pageFilter) {
+  htmlPages = htmlPages.filter((page) => page === pageFilter);
+  if (htmlPages.length === 0) {
+    console.error(`error: --page did not match an HTML file: ${pageFilter}`);
+    process.exit(2);
+  }
+}
 
 if (htmlPages.length === 0) {
   console.log("skip: no HTML pages for responsive check");
@@ -172,10 +196,21 @@ try {
   await cdp.send("Runtime.enable");
 
   const failures = [];
+  pageLoop:
   for (const page of htmlPages) {
     for (const viewport of viewports) {
       const url = `${baseUrl}/${page}`;
-      const result = await checkPage(cdp, url, viewport);
+      let result;
+      try {
+        result = await checkPage(cdp, url, viewport);
+      } catch (error) {
+        const checkError = error.message || String(error);
+        failures.push({ page, viewport: viewport.name, checkError });
+        if (checkError.includes("timeout waiting for CDP")) {
+          break pageLoop;
+        }
+        continue;
+      }
       if (result.overflowX || result.imageProblems.length > 0 || result.overflowingElements.length > 0) {
         failures.push({ page, viewport: viewport.name, ...result });
       }
@@ -185,6 +220,10 @@ try {
   if (failures.length > 0) {
     for (const failure of failures) {
       console.error(`responsive check failed: ${failure.page} @ ${failure.viewport}`);
+      if (failure.checkError) {
+        console.error(`  error: ${failure.checkError}`);
+        continue;
+      }
       console.error(`  viewport: ${failure.clientWidth}px, scrollWidth: ${failure.scrollWidth}px`);
       if (failure.imageProblems.length > 0) {
         console.error(`  image problems: ${JSON.stringify(failure.imageProblems.slice(0, 5))}`);
@@ -203,7 +242,10 @@ try {
   }
   if (!chromeExited) {
     chromeProcess.kill();
-    await new Promise((resolveDone) => chromeProcess.once("exit", resolveDone));
+    await waitForProcessExit(chromeProcess, () => chromeExited, 5_000).catch(async () => {
+      chromeProcess.kill("SIGKILL");
+      await waitForProcessExit(chromeProcess, () => chromeExited, 5_000).catch(() => {});
+    });
   }
   await rm(profileDir, { recursive: true, force: true });
   if (process.exitCode && stderr.trim()) {
@@ -213,11 +255,12 @@ try {
 
 function usage(code) {
   const out = code === 0 ? console.log : console.error;
-  out(`usage: scripts/check-responsive.mjs --base-url http://127.0.0.1:<port>
+  out(`usage: scripts/check-responsive.mjs --base-url http://127.0.0.1:<port> [--page tech/example.html]
 
 Uses local Chrome/Chromium headless to check every HTML page at mobile and
 desktop viewport widths for horizontal overflow and missing images. If Chrome
-is not available, the check prints a skip message and exits successfully.`);
+is not available, the check prints a skip message and exits successfully.
+Use --page to check one HTML file while debugging.`);
   process.exit(code);
 }
 
@@ -365,4 +408,21 @@ async function checkPage(cdp, url, viewport) {
 
 function delay(ms) {
   return new Promise((resolveDelay) => setTimeout(resolveDelay, ms));
+}
+
+function withTimeout(promise, timeoutMs, message) {
+  let timer;
+  const timeout = new Promise((_, rejectTimeout) => {
+    timer = setTimeout(() => rejectTimeout(new Error(message)), timeoutMs);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
+
+function waitForProcessExit(process, isExited, timeoutMs) {
+  if (isExited()) return Promise.resolve();
+  return withTimeout(
+    new Promise((resolveDone) => process.once("exit", resolveDone)),
+    timeoutMs,
+    "process did not exit in time",
+  );
 }
